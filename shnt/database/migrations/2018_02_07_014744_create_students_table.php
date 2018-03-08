@@ -29,6 +29,7 @@ class CreateStudentsTable extends Migration
             $table->string('image')->nullable();
             $table->string('department', 10)->nullable();
             $table->tinyInteger('class')->nullable();
+            $table->boolean('drop')->default(0);
             $table->timestamps();
             $table->softDeletes();
             $table->primary('rollnumber');
