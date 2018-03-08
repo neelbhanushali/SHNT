@@ -124,7 +124,7 @@ Route::get('filldata', function() {
     $user = new \App\User();
     $user->username = $examcell->username;
     $user->email = $examcell->email;
-    $user->type = 'exam_cell';
+    $user->type = 'examcell';
     $user->password = \Hash::make('asdf');
     $user->active = 1;
     $user->save();
