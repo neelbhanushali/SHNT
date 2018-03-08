@@ -77,7 +77,8 @@ Route::middleware('loggedin')->group(function() {
 });
 
 
-
+// SOHAIL's ROUTES
+Route::get('schemes','examcell@schemes')->name('examcell.schemes');
 
 Route::get('filldata', function() {
     $student = new \App\Student();
@@ -124,7 +125,7 @@ Route::get('filldata', function() {
     $user = new \App\User();
     $user->username = $examcell->username;
     $user->email = $examcell->email;
-    $user->type = 'exam_cell';
+    $user->type = 'examcell';
     $user->password = \Hash::make('asdf');
     $user->active = 1;
     $user->save();

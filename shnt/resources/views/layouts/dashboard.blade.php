@@ -162,52 +162,45 @@
                 
                 
                 @yield('navigation')
+                <!-- EXAM CELL NAVIGATION -->
+                @if(session()->get('type')=='examcell')
                 <li class="bold">
                   <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">pie_chart_outlined</i>
-                    <span class="nav-text">Charts</span>
+                    <i class="material-icons">library_books</i>
+                    <span class="nav-text">Curriculum</span>
                   </a>
                   <div class="collapsible-body">
                     <ul>
                       <li>
-                        <a href="charts-chartjs.html">
+                        <a href="{{route('examcell.schemes')}}">
                           <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Chart JS</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-chartist.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Chartist</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-morris.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Morris Charts</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-xcharts.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>xCharts</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-flotcharts.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Flot Charts</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="charts-sparklines.html">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Sparkline Charts</span>
+                          <span>Schemes</span>
                         </a>
                       </li>
                     </ul>
                   </div>
                 </li>
+                @endif
+                <!-- EXAM CELL NAVIGATION ENDS -->
+
+                <!-- LOGOUT -->
+                <li class="bold">
+                  <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">library_books</i>
+                    <span class="nav-text"></span>
+                  </a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li>
+                        <a href="{{route('examcell.schemes')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Schemes</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <!-- LOGOUT ENDS -->
               </ul>
             </li>
             
