@@ -48,7 +48,7 @@
               <i class="material-icons">search</i>
               <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize" />
             </div>  --}}
-            <ul class="right hide-on-med-and-down">
+            <ul class="right">
               {{--  <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown">
                   <span class="flag-icon flag-icon-gb"></span>
@@ -183,24 +183,6 @@
                 @endif
                 <!-- EXAM CELL NAVIGATION ENDS -->
 
-                <!-- LOGOUT -->
-                <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">library_books</i>
-                    <span class="nav-text"></span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="{{route('examcell.schemes')}}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Schemes</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <!-- LOGOUT ENDS -->
               </ul>
             </li>
             
