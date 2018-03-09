@@ -16,32 +16,28 @@
 
 @section('content')
 <div class="row">
-    <div class="col s12 m12 l12">
-        <div class="card-panel">
-            <div id="table-datatables">
-                <h4 class="header">SCHEMES</h4>
-                <h6 class="header">This table will show you all the schemes available in the system.</h6> 
-                <div class="row">
-                    <div class="col s12">
-                        <table id="data-table-simple" class="responsive-table display" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <td>SCHEME NAME</td>
-                                    <td>WITH EFFECT FROM</td>
-                                </tr>
-                            </thead>
-                            @foreach($scheme = \App\Scheme::orderBy('wef','desc')->get() as $schemes)
-                            <tr>
-                                <td>{{$schemes->scheme}}</td>
-                                <td>{{$schemes->wef}}</td>
-                            </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-            </div>  
+<div id="table-datatables">
+    <h4 class="header">SCHEMES</h4>
+    <h6 class="header">This table will show you all the schemes available in the system.</h6> 
+    <div class="row">
+        <div class="col s12">
+            <table id="data-table-simple" class="responsive-table display card-panel" cellspacing="1">
+                <thead>
+                    <tr>
+                        <td>SCHEME NAME</td>
+                        <td>WITH EFFECT FROM</td>
+                    </tr>
+                </thead>
+                @foreach($scheme = \App\Scheme::orderBy('wef','desc')->get() as $schemes)
+                <tr>
+                    <td>{{$schemes->scheme}}</td>
+                    <td>{{$schemes->wef}}</td>
+                </tr>
+                @endforeach
+            </table>
         </div>
     </div>
+</div>
 </div>
 @endsection
 
