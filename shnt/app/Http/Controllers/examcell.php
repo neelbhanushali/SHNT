@@ -9,7 +9,7 @@ class examcell extends Controller
     public function schemes() {
         $user = \App\ExamCell::find(session()->get('username'));
 
-        return view('examcell.scheme')->with(compact('user'));
+        return view('examcell.forms.schemes')->with(compact('user'));
     }
 
     public function getexaminationform() {
