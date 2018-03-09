@@ -12,7 +12,6 @@ class examcell extends Controller
         return view('examcell.forms.schemes')->with(compact('user'));
     }
 
-<<<<<<< HEAD
     public function addscheme(Request $r) {
         $scheme = new \App\Scheme();
 
@@ -26,12 +25,12 @@ class examcell extends Controller
         $return['schemes'] = \App\Scheme::all();
         $return['_token'] = csrf_token();
         return json_encode($return);
-=======
+    }
+    
     public function syllabus() {
         $user = \App\ExamCell::find(session()->get('username'));
         
         return view('examcell.forms.syllabus')->with(compact('user'));
->>>>>>> 363652be24796ac2ed62bda34beca1605823daf9
     }
 
     public function getexaminationform() {
