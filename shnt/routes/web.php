@@ -80,6 +80,9 @@ Route::middleware('loggedin')->group(function() {
 // SOHAIL's ROUTES
 Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
 
+// HARIS's ROUTES
+Route::post('addshceme','Scheme@save');
+
 Route::get('filldata', function() {
     $student = new \App\Student();
     $student->firstname = "Neelkumar";

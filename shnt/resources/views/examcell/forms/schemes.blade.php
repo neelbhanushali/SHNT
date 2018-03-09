@@ -10,47 +10,62 @@
 
 
 @section('content')
-<div>
 <div class="row">
-    <form class="col s12">
+  <div class="col s12 m12 l12">
+    <div class="card-panel">
+      <h4 class="header2">Add Scheme</h4>
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
+        <form class="col s12" action="{{url('addscheme')}}" method="post">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="scheme" type="text" name="scheme" class="validate">
+              <label for="scheme">Scheme</label>
+            </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="wef" type="text" name="wef">
+              <label for="wef">With Effect From</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn cyan waves-effect waves-light right" id="scheme" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </div>
+@endsection
+@section('js')
+@parent
+<script src="/assets/js/jquery.validate.min.js"></script>
+<script src="/assets/js/scripts/form-elements.js"></script>
+<script type="text/javascript" src="/assets/vendors/jquery-3.2.1.min.js"></script>
+<!--materialize js-->
+<script type="text/javascript" src="/assets/js/materialize.min.js"></script>
+<!--scrollbar-->
+<script type="text/javascript" src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+<script type="text/javascript" src="/assets/js/plugins.js"></script>
+<!--custom-script.js - Add your own theme custom JS-->
+<script type="text/javascript" src="/assets/js/custom-script.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#scheme').validate({
+      rules: {
+        name:{
+          required: true
+        }
+      }
+    });
+    console.log('haris');
+  });
+</script>
 @endsection
