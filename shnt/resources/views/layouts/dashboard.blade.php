@@ -172,7 +172,7 @@
                   <div class="collapsible-body">
                     <ul>
                       <li>
-                        <a href="{{route('examcell.schemes')}}">
+                        <a href="{{route('examcell.forms.schemes')}}">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span>Schemes</span>
                         </a>

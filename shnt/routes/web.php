@@ -78,7 +78,7 @@ Route::middleware('loggedin')->group(function() {
 
 
 // SOHAIL's ROUTES
-Route::get('schemes','examcell@schemes')->name('examcell.schemes');
+Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
 
 Route::get('filldata', function() {
     $student = new \App\Student();
