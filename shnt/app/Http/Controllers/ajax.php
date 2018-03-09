@@ -73,5 +73,15 @@ class ajax extends Controller
 
             die(json_encode(!$foundinstudent));
         }
+
+
+        if($r->has('scheme')) {
+            $found = false;
+            $scheme = \App\Scheme::where('scheme', $r->input('scheme'))->get();
+            
+            $found = (count($scheme)) ? false : true;
+
+            die(json_encode($found));
+        }
     }
 }

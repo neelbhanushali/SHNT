@@ -23,3 +23,6 @@ $.fn.extend({
 		$(form)[0].reset();
 	}
 });
+
+$('.modal').modal();
+$('.datatable').DataTable();

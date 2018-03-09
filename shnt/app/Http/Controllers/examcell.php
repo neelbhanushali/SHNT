@@ -12,6 +12,21 @@ class examcell extends Controller
         return view('examcell.forms.schemes')->with(compact('user'));
     }
 
+    public function addscheme(Request $r) {
+        $scheme = new \App\Scheme();
+
+        $scheme->scheme = $r->input('scheme');
+        $scheme->wef = $r->input('wef');
+        $scheme->save();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Scheme successfully added';
+        $return['schemes'] = \App\Scheme::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
+
     public function getexaminationform() {
         if(!session()->has('logintoken'))
             return redirect()->route('login');

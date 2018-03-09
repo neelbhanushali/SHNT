@@ -16,6 +16,7 @@
     <!-- For iPhone -->
     <meta name="msapplication-TileColor" content="#00bcd4">
     <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- For Windows Phone -->
     @section('css')
     <!-- CORE CSS-->
@@ -27,6 +28,7 @@
     <link href="/assets/vendors/prism/prism.css" type="text/css" rel="stylesheet">
     <link href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet">
     <link href="/assets/vendors/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/vendors/sweetalert/dist/sweetalert.css">
     @show
   </head>
   <body class="layout-dark">
@@ -293,8 +295,33 @@
     <script type="text/javascript" src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="/assets/js/plugins.js"></script>
+
+    <script type="text/javascript" src="/assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="/assets/js/custom-script.js"></script>
+    <script type="text/javascript" src="/assets/js/scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/assets/js/scripts/additional-methods.min.js"></script>
+    <script type="text/javascript" src="/assets/vendors/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="/assets/js/scripts/extra-components-sweetalert.js"></script>
+    <script>
+      $.validator.setDefaults({
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+      });
+
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    </script>
     @show
   </body>
 </html>
