@@ -14,7 +14,7 @@ class examcell extends Controller
 
     public function syllabus() {
         $user = \App\ExamCell::find(session()->get('username'));
-
+        
         return view('examcell.forms.syllabus')->with(compact('user'));
     }
 

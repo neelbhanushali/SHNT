@@ -47,7 +47,36 @@
     <div class="col s12 m12 l12">
         <div class="card-panel">
             <h4 class="header">SYLLABUS</h4>
-            <h6>(Small Desciption about the form)</h6>
+        <div class="row">
+                <div class="input-field col s6">
+                    <select>
+                    <option value="" disabled selected>Choose Scheme</option>
+                    @foreach($schemes = \App\Scheme::all() as $s)
+                        <option value="{{$s->scheme}}">{{$s->scheme}}</option>
+                    @endforeach
+                    </select>
+                    <label>Select Scheme</label>
+                </div>
+                <div class="input-field col s6">
+                    <select name="department">
+                    <option value="" disabled selected>Choose Department</option>
+                    @foreach($departments = \App\Department::all() as $dept)
+                        <option data-year="{{$dept->years}}" value="{{$dept->dept}}">{{$dept->department}}</option>
+                    @endforeach
+                    </select>
+                    <label>Select Department</label>
+                </div>
+                <div class="input-field col s6">
+                    <select name="semester">
+                    <option value="" disabled selected>Choose Semester</option>
+                    </select>
+                    <label>Select Semester</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="wef" name="wef" type="text">
+                    <label for="wef">With Effet From</label>
+                </div>
+            </div>
         </div>
         <div class="card-panel" id="subjectarea">
             <h4 class="header">ENTER SUBJECTS FOR THE SCHEME</h4>
@@ -118,7 +147,6 @@
                         <button type="button" class="btn">CLICK TO VERIFY</button>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
@@ -174,6 +202,20 @@
                 $("#prordiv").attr("disabled","disabled");
             }
         })
+        $('select[name=department]').on('change',function() {
+            var dept= $(this);
+            var sem = $('select[name=semester]');
+            $(dept).find('option').each(function(){
+                if($(this).attr('value') == $(dept).val()) {
+                    var year = $(this).data('year');
+                    sem.html('<option disabled selected>Choose Semester</option>');
+                    for(var i = 1; i <= year*2; i++)
+                        // $(sem).append('<option value="'+i+'">'+i+'</option>');
+                        sem.append("<option value="+i+">"+i+"</option>");
+                }
+            });
+            $('select').material_select();
+        });
     });
 </script>
 @endsection
