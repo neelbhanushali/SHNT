@@ -177,6 +177,12 @@
                           <span>Schemes</span>
                         </a>
                       </li>
+                      <li>
+                        <a href="{{route('examcell.forms.syllabus')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Syllabus</span>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </li>

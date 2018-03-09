@@ -12,6 +12,12 @@ class examcell extends Controller
         return view('examcell.forms.schemes')->with(compact('user'));
     }
 
+    public function syllabus() {
+        $user = \App\ExamCell::find(session()->get('username'));
+
+        return view('examcell.forms.syllabus')->with(compact('user'));
+    }
+
     public function getexaminationform() {
         if(!session()->has('logintoken'))
             return redirect()->route('login');
