@@ -1,6 +1,5 @@
 @extends('layouts.dashboard')
-@section('username', session()->get('username'))
-@section('title', 'Schemes')
+@section('page', 'Schemes')
 
 @section('css')
 @parent

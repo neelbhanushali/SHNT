@@ -259,7 +259,7 @@ class user extends Controller
             $user = \App\Student::find(session()->get('username'));
         if(session()->get('type') == 'staff')
             $user = \App\Staff::find(session()->get('username'));
-        if(session()->get('type') == 'exam_cell')
+        if(session()->get('type') == 'examcell')
             $user = \App\ExamCell::find(session()->get('username'));
         if(session()->get('type') == 'admin')
             $user = \App\Admin::find(session()->get('username'));
@@ -270,21 +270,14 @@ class user extends Controller
     }
 
     public function profile() {
-        // dd(session()->all());
-        
-        if(!session()->has('logintoken'))
-            return redirect()->route('login');
-
         if(session()->get('type') == 'student')
             $user = \App\Student::find(session()->get('username'));
         if(session()->get('type') == 'staff')
             $user = \App\Staff::find(session()->get('username'));
-        if(session()->get('type') == 'exam_cell')
+        if(session()->get('type') == 'examcell')
             $user = \App\ExamCell::find(session()->get('username'));
         if(session()->get('type') == 'admin')
             $user = \App\Admin::find(session()->get('username'));
-
-        // dd($user);
 
         return view('profile')->with(compact('user'));
     }
