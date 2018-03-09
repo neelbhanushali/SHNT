@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button form="schemeform" class="modal-action waves-effect waves-green btn-flat">Add Scheme</a>
+        <button form="schemeform" class="modal-action waves-effect waves-green btn">Add Scheme</a>
     </div>
 </div>
 @endsection
