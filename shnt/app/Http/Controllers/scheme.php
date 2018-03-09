@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class scheme extends Controller
 {
     public function save(Request $request){
-        $sch = new Scheme;
+        $sch = new \App\Scheme();
         $sch->scheme = $request->scheme;
         $sch->wef = $request->wef;
         $sch->save();
