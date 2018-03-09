@@ -11,5 +11,6 @@ class scheme extends Controller
         $sch->scheme = $request->scheme;
         $sch->wef = $request->wef;
         $sch->save();
+        return view('examcell.forms.schemes');
     }
 }

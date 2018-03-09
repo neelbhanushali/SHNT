@@ -81,7 +81,7 @@ Route::middleware('loggedin')->group(function() {
 Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
 
 // HARIS's ROUTES
-Route::post('addshceme','Scheme@save');
+Route::post('addscheme','Scheme@save')->name('examcell.forms.schemes');
 
 Route::get('filldata', function() {
     $student = new \App\Student();
