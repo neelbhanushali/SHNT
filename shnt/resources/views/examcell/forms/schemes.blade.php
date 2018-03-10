@@ -25,14 +25,28 @@
                         <table class="datatable display" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <td>SCHEME NAME</td>
-                                    <td>WITH EFFECT FROM</td>
+                                    <th>SCHEME NAME</th>
+                                    <th>WITH EFFECT FROM</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             @foreach($scheme = \App\Scheme::orderBy('wef','desc')->get() as $schemes)
                             <tr>
                                 <td>{{$schemes->scheme}}</td>
                                 <td>{{$schemes->wef}}</td>
+                                <td>
+                                    <form class="schemeactionform" action="{{action('examcell@updatescheme')}}" method="post">
+                                        {{csrf_field()}}
+                                        {{method_field('delete')}}
+                                        <input type="hidden" name="id" value="{{$schemes->id}}">
+                                        <button class="btn-floating waves-effect waves-light editbtn">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button class="btn-floating waves-effect red waves-light deletebtn">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </table>
@@ -42,7 +56,7 @@
         </div>
     </div>
 </div>
-<div class="fixed-action-btn" style="position: fixed;bottom: 40px;">
+<div class="fixed-action-btn">
 <a id="schemeadd" class="btn-floating btn-large btn modal-trigger" href="#schememodal">
     <i class="material-icons">add</i>
 </a>
@@ -53,6 +67,7 @@
         <h4>Add Scheme</h4>
         <div class="row">
             <form method="post" action="{{action('examcell@addscheme')}}" id="schemeform" class="col s12">
+                <fieldset class="form-fieldset">
                 {{csrf_field()}}
                 <div class="row">
                 <div class="input-field col s12">
@@ -66,6 +81,8 @@
                     <label for="wef">WEF</label>
                 </div>
                 </div>
+                <button>asdf</button>
+                </fieldset>
             </form>
         </div>
     </div>
@@ -80,6 +97,8 @@
 
 <script>
     $(document).ready(function() {
+        datatable.column('1').order('desc').draw();
+
         $('#schemeform').validate({
             rules: {
                 scheme: {
@@ -106,7 +125,9 @@
             }
         });
 
-        $('#schemeform').submit(function(e) {
+        $('#schemeform').on('submit', function(e) {
+            if(!$(this).valid()) return;
+            
             e.preventDefault();
             var form = $(this);
             var formdata = $(form).serialize();
@@ -116,23 +137,78 @@
                 $(form).attr('action'),
                 formdata,
                 function(data) {
-                data = JSON.parse(data);
-                    $('meta[name="csrf-token"]').attr('content', data._token);
-                    swal(data.title, data.message, data.type);
-                    $(form).done();
-                    $('#schememodal').modal('close');
-                    Materialize.updateTextFields();
-                    $('table tbody').empty();
-                    for(var i = 0; i < data.schemes.length; i++) {
-                        $('table tbody').append(''+
-                            '<tr>'+
-                                '<td>'+data.schemes[i].scheme+'</td>'+
-                                '<td>'+data.schemes[i].wef+'</td>'+
-                            '</tr>');
-                    }
-                    $('.datatable').DataTable();
+                    data = JSON.parse(data);
+                    console.log(data);
+                    // $('meta[name="csrf-token"]').attr('content', data._token);
+                    // swal(data.title, data.message, data.type);
+                    // $(form).done();
+                    // $('#schememodal').modal('close');
+                    // Materialize.updateTextFields();
+                    // $('table tbody').empty();
+                    // for(var i = 0; i < data.schemes.length; i++) {
+                    //     $('table tbody').append(`
+                    //         <tr>
+                    //             <td>${data.schemes[i].scheme}</td>
+                    //             <td>${data.schemes[i].wef}</td>
+                    //             <td>
+                    //                 <form class="schemeactionform" action="{{action('examcell@updatescheme')}}" method="post">
+                    //                     {{csrf_field()}}
+                    //                     {{method_field('delete')}}
+                    //                     <input type="hidden" name="id" value="{{$schemes->id}}">
+                    //                     <button class="btn-floating waves-effect waves-light editbtn">
+                    //                         <i class="material-icons">edit</i>
+                    //                     </button>
+                    //                     <button class="btn-floating waves-effect red waves-light deletebtn">
+                    //                         <i class="material-icons">delete</i>
+                    //                     </button>
+                    //                 </form>
+                    //             </td>
+                    //         </tr>`);
+                    // }
+                    // var datatable = $('.datatable').DataTable();
+                    // datatable.column('1').order('desc').draw();
                 }
             );
+        });
+
+        $('.editbtn').click(function() {
+            $(this).closest('form').find('input[name=_method]').val('patch');
+        });
+
+        $('.deletebtn').click(function() {
+            $(this).closest('form').find('input[name=_method]').val('delete');
+        });
+
+
+        $('.schemeactionform').submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var method = $(this).find('input[name=_method]').val(); 
+
+            if(method == 'patch') {
+                $('#schemeform').find('input[name=scheme]').val($(form).closest('tr').find('td:nth-child(1)').html());
+                $('#schemeform').find('input[name=wef]').val($(form).closest('tr').find('td:nth-child(2)').html());
+                $('#schemeform').append('{{method_field("patch")}}');
+                $('#schemeform').append('<input type="hidden" name="id" value="'+$(form).find('[name=id]').val()+'">');
+                $('#schememodal').find('h4').html('Update Scheme');
+                $('#schememodal').find('button.modal-action').html('Update Scheme');
+                
+                $('#schememodal').modal('open');
+                Materialize.updateTextFields();
+            }
+        });
+
+        $('.modal').modal({
+            complete: function() {
+                $('#schemeform').find('input[name=scheme]').val('');
+                $('#schemeform').find('input[name=wef]').val('');
+                Materialize.updateTextFields();
+                $('#schememodal').find('h4').html('Add Scheme');
+                $('#schememodal').find('button.modal-action').html('Add Scheme');
+
+                $('#schemeform [name=_method]').remove();
+                $('#schemeform [name=id]').remove();
+            }
         });
     });
 </script>

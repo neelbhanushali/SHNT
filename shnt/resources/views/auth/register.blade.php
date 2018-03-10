@@ -195,6 +195,8 @@
     });
 
     $('#register-form').submit(function(e) {
+      if(!$(this).valid()) return;
+
       e.preventDefault();
       var form = $(this);
       var formdata = $(form).serialize();

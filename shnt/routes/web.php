@@ -80,6 +80,9 @@ Route::middleware('loggedin')->group(function() {
 // SOHAIL's ROUTES
 Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
 Route::post('schemes','examcell@addscheme');
+Route::patch('schemes','examcell@updatescheme');
+Route::delete('schemes','examcell@deletescheme');
+
 Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
 
 Route::get('filldata', function() {

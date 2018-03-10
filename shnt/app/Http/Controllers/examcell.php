@@ -27,6 +27,14 @@ class examcell extends Controller
         return json_encode($return);
     }
     
+    public function updatescheme(Request $r) {
+        dd($r->all());
+    }
+
+    public function deletescheme(Request $r) {
+        dd($r->all());
+    }
+
     public function syllabus() {
         $user = \App\ExamCell::find(session()->get('username'));
         

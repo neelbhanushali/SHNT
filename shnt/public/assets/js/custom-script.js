@@ -25,7 +25,7 @@ $.fn.extend({
 });
 
 $('.modal').modal();
-$('.datatable').DataTable();
+var datatable = $('.datatable').DataTable();
 
 function update_side_menu() {
 	var anchor = $('#slide-out li a[href="'+window.location.href+'"]');
