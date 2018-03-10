@@ -108,6 +108,7 @@
           remote: {
             url: '{{route('validator')}}',
             type: 'post',
+            async: false,
             data: {
               username: function() {
                 return $('#register-form [name=username]').val();
@@ -120,6 +121,7 @@
           remote: {
             url: '{{route('validator')}}',
             type: 'post',
+            async: false,
             data: {
               rollnumber: function() {
                 return $('#register-form [name=rollnumber]').val();
@@ -133,6 +135,7 @@
           remote: {
             url: '{{route('validator')}}',
             type: 'post',
+            async: false,
             data: {
               email: function() {
                 return $('#register-form [name=email]').val();
@@ -146,6 +149,7 @@
           remote: {
             url: '{{route('validator')}}',
             type: 'post',
+            async: false,
             data: {
               contact: function() {
                 return $('#register-form [name=contact]').val();

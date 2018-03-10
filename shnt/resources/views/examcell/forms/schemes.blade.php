@@ -81,7 +81,6 @@
                     <label for="wef">WEF</label>
                 </div>
                 </div>
-                <button>asdf</button>
                 </fieldset>
             </form>
         </div>
@@ -99,13 +98,14 @@
     $(document).ready(function() {
         datatable.column('1').order('desc').draw();
 
-        $('#schemeform').validate({
+        var validator = $('#schemeform').validate({
             rules: {
                 scheme: {
                     required: true,
                     remote: {
                         url: '{{route('validator')}}',
                         type: 'post',
+                        async: false,
                         data: {
                             scheme: function() {
                                 return $('#schemeform [name=scheme]').val();
@@ -127,7 +127,7 @@
 
         $('#schemeform').on('submit', function(e) {
             if(!$(this).valid()) return;
-            
+
             e.preventDefault();
             var form = $(this);
             var formdata = $(form).serialize();
@@ -138,35 +138,40 @@
                 formdata,
                 function(data) {
                     data = JSON.parse(data);
-                    console.log(data);
-                    // $('meta[name="csrf-token"]').attr('content', data._token);
-                    // swal(data.title, data.message, data.type);
-                    // $(form).done();
-                    // $('#schememodal').modal('close');
-                    // Materialize.updateTextFields();
-                    // $('table tbody').empty();
-                    // for(var i = 0; i < data.schemes.length; i++) {
-                    //     $('table tbody').append(`
-                    //         <tr>
-                    //             <td>${data.schemes[i].scheme}</td>
-                    //             <td>${data.schemes[i].wef}</td>
-                    //             <td>
-                    //                 <form class="schemeactionform" action="{{action('examcell@updatescheme')}}" method="post">
-                    //                     {{csrf_field()}}
-                    //                     {{method_field('delete')}}
-                    //                     <input type="hidden" name="id" value="{{$schemes->id}}">
-                    //                     <button class="btn-floating waves-effect waves-light editbtn">
-                    //                         <i class="material-icons">edit</i>
-                    //                     </button>
-                    //                     <button class="btn-floating waves-effect red waves-light deletebtn">
-                    //                         <i class="material-icons">delete</i>
-                    //                     </button>
-                    //                 </form>
-                    //             </td>
-                    //         </tr>`);
-                    // }
-                    // var datatable = $('.datatable').DataTable();
-                    // datatable.column('1').order('desc').draw();
+                    $('meta[name="csrf-token"]').attr('content', data._token);
+                    swal({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type
+                    }, function() {
+                        $(form).done();
+                        $('#schememodal').modal('close');
+                        Materialize.updateTextFields();
+                        $('table.datatable tbody').empty();
+                        for(var i = 0; i < data.schemes.length; i++) {
+                            $('table.datatable tbody').append(`
+                                <tr>
+                                    <td>${data.schemes[i].scheme}</td>
+                                    <td>${data.schemes[i].wef}</td>
+                                    <td>
+                                        <form class="schemeactionform" method="post">
+                                            <input type="hidden" name="_token" value="${data._token}">
+                                            <input type="hidden" name="_method" value="patch">
+                                            <input type="hidden" name="id" value="${data.schemes[i].id}">
+                                            <button class="btn-floating waves-effect waves-light editbtn">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button class="btn-floating waves-effect red waves-light deletebtn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>`);
+                        }
+                        $('.datatable').DataTable().destroy();
+                        var datatable = $('.datatable').DataTable();
+                        datatable.column('1').order('desc').draw();
+                    });
                 }
             );
         });
@@ -179,8 +184,7 @@
             $(this).closest('form').find('input[name=_method]').val('delete');
         });
 
-
-        $('.schemeactionform').submit(function(e) {
+        document.querySelector('.schemeactionform').addEventListener('submit', function(e) {
             e.preventDefault();
             var form = $(this);
             var method = $(this).find('input[name=_method]').val(); 
@@ -198,6 +202,29 @@
             }
         });
 
+        /** 
+         * For some reason, the above code works
+         * And below doesn't
+         * idk
+         */
+        // $('.schemeactionform').on('submit', function(e) {
+        //     e.preventDefault();
+        //     var form = $(this);
+        //     var method = $(this).find('input[name=_method]').val(); 
+
+        //     if(method == 'patch') {
+        //         $('#schemeform').find('input[name=scheme]').val($(form).closest('tr').find('td:nth-child(1)').html());
+        //         $('#schemeform').find('input[name=wef]').val($(form).closest('tr').find('td:nth-child(2)').html());
+        //         $('#schemeform').append('{{method_field("patch")}}');
+        //         $('#schemeform').append('<input type="hidden" name="id" value="'+$(form).find('[name=id]').val()+'">');
+        //         $('#schememodal').find('h4').html('Update Scheme');
+        //         $('#schememodal').find('button.modal-action').html('Update Scheme');
+                
+        //         $('#schememodal').modal('open');
+        //         Materialize.updateTextFields();
+        //     }
+        // });
+
         $('.modal').modal({
             complete: function() {
                 $('#schemeform').find('input[name=scheme]').val('');
@@ -208,6 +235,8 @@
 
                 $('#schemeform [name=_method]').remove();
                 $('#schemeform [name=id]').remove();
+
+                validator.resetForm();
             }
         });
     });

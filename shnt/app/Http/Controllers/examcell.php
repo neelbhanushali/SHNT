@@ -28,7 +28,18 @@ class examcell extends Controller
     }
     
     public function updatescheme(Request $r) {
-        dd($r->all());
+        $scheme = \App\Scheme::find($r->input('id'));
+
+        $scheme->scheme = $r->input('scheme');
+        $scheme->wef = $r->input('wef');
+        $scheme->save();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Scheme successfully updated';
+        $return['schemes'] = \App\Scheme::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
     }
 
     public function deletescheme(Request $r) {
