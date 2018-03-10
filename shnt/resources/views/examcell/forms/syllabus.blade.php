@@ -48,39 +48,43 @@
         <div class="card-panel">
             <h4 class="header">SYLLABUS</h4>
         <div class="row">
-                <div class="input-field col s6">
-                    <select>
-                    <option value="" disabled selected>Choose Scheme</option>
-                    @foreach($schemes = \App\Scheme::all() as $s)
-                        <option value="{{$s->scheme}}">{{$s->scheme}}</option>
-                    @endforeach
-                    </select>
-                    <label>Select Scheme</label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="department">
-                    <option value="" disabled selected>Choose Department</option>
-                    @foreach($departments = \App\Department::all() as $dept)
-                        <option data-year="{{$dept->years}}" value="{{$dept->dept}}">{{$dept->department}}</option>
-                    @endforeach
-                    </select>
-                    <label>Select Department</label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="semester">
-                    <option value="" disabled selected>Choose Semester</option>
-                    </select>
-                    <label>Select Semester</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="wef" name="wef" type="text">
-                    <label for="wef">With Effet From</label>
-                </div>
+            <div class="input-field col s6">
+                <select>
+                <option value="" disabled selected>Choose Scheme</option>
+                @foreach($schemes = \App\Scheme::all() as $s)
+                    <option value="{{$s->scheme}}">{{$s->scheme}}</option>
+                @endforeach
+                </select>
+                <label>Select Scheme</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="department">
+                <option value="" disabled selected>Choose Department</option>
+                @foreach($departments = \App\Department::all() as $dept)
+                    <option data-year="{{$dept->years}}" value="{{$dept->dept}}">{{$dept->department}}</option>
+                @endforeach
+                </select>
+                <label>Select Department</label>
+            </div>
+            <div class="input-field col s6">
+                <select name="semester">
+                <option value="" disabled selected>Choose Semester</option>
+                </select>
+                <label>Select Semester</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="wef" name="wef" type="text">
+                <label for="wef">With Effect From</label>
+            </div>
+            <div class="input-field col s12">
+                <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
             </div>
         </div>
+    </div>
         <div class="card-panel" id="subjectarea">
             <h4 class="header">ENTER SUBJECTS FOR THE SCHEME</h4>
-            <h6>(Small Desciption about the form)</h6>
             <div class="card-panel">
                 <div class="row">
                     <div class="input-field col s4">
