@@ -43,7 +43,15 @@ class examcell extends Controller
     }
 
     public function deletescheme(Request $r) {
-        dd($r->all());
+        $scheme = \App\Scheme::find($r->input('id'));
+        $scheme->delete();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Scheme successfully deleted';
+        $return['schemes'] = \App\Scheme::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
     }
 
     public function syllabus() {

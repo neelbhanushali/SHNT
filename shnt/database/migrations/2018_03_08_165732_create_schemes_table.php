@@ -18,6 +18,7 @@ class CreateSchemesTable extends Migration
             $table->string('scheme', 20);
             $table->string('wef', 10);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
