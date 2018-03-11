@@ -25,4 +25,19 @@ $.fn.extend({
 });
 
 $('.modal').modal();
-$('.datatable').DataTable();
+var datatable = $('.datatable').DataTable();
+
+function update_side_menu() {
+	var anchor = $('#slide-out li a[href="'+window.location.href+'"]');
+	// setting parent li as active
+	$(anchor).parent().addClass('active');
+
+	// setting li.bold as active
+	$(anchor).closest('li.bold').addClass('active');
+
+	// setting a.collapsible-header as active
+	$(anchor).closest('li.bold').find('a.collapsible-header').addClass('active');
+
+	// displaying collapsible-body
+	$(anchor).closest('li.bold').find('div.collapsible-body').show();
+}update_side_menu();
