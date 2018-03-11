@@ -12,6 +12,12 @@ class examcell extends Controller
         return view('examcell.forms.schemes')->with(compact('user'));
     }
 
+    public function seatno() {
+        $user = \App\ExamCell::find(session()->get('username'));
+
+        return view('examcell.forms.seatno')->with(compact('user'));
+    }
+
     public function addscheme(Request $r) {
         $scheme = new \App\Scheme();
 

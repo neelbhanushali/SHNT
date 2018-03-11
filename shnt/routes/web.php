@@ -82,6 +82,9 @@ Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
 Route::post('schemes','examcell@addscheme');
 Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
 
+// HARIS's ROUTES
+Route::get('seatno','examcell@seatno')->name('examcell.forms.seatno');
+
 Route::get('filldata', function() {
     $student = new \App\Student();
     $student->firstname = "Neelkumar";
