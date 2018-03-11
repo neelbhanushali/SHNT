@@ -22,7 +22,7 @@
                 <h6 class="header">This table will show you all the schemes available in the system.</h6> 
                 <div class="row">
                     <div class="col s12">
-                        <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                        <table id="data-table-simple" class="datatable display" cellspacing="0">
                             <thead>
                                 <tr>
                                     <td>SCHEME NAME</td>
@@ -47,40 +47,42 @@
     <div class="col s12 m12 l12">
         <div class="card-panel">
             <h4 class="header">SYLLABUS</h4>
-        <div class="row">
-                <div class="input-field col s6">
-                    <select>
-                    <option value="" disabled selected>Choose Scheme</option>
-                    @foreach($schemes = \App\Scheme::all() as $s)
-                        <option value="{{$s->scheme}}">{{$s->scheme}}</option>
-                    @endforeach
-                    </select>
-                    <label>Select Scheme</label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="department">
-                    <option value="" disabled selected>Choose Department</option>
-                    @foreach($departments = \App\Department::all() as $dept)
-                        <option data-year="{{$dept->years}}" value="{{$dept->dept}}">{{$dept->department}}</option>
-                    @endforeach
-                    </select>
-                    <label>Select Department</label>
-                </div>
-                <div class="input-field col s6">
-                    <select name="semester">
-                    <option value="" disabled selected>Choose Semester</option>
-                    </select>
-                    <label>Select Semester</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="wef" name="wef" type="text">
-                    <label for="wef">With Effet From</label>
+            <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                        <option value="" disabled selected>Choose Scheme</option>
+                        @foreach($schemes = \App\Scheme::all() as $s)
+                            <option value="{{$s->scheme}}">{{$s->scheme}}</option>
+                        @endforeach
+                        </select>
+                        <label>Select Scheme</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="department">
+                        <option value="" disabled selected>Choose Department</option>
+                        @foreach($departments = \App\Department::all() as $dept)
+                            <option data-year="{{$dept->years}}" value="{{$dept->dept}}">{{$dept->department}}</option>
+                        @endforeach
+                        </select>
+                        <label>Select Department</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="semester">
+                        <option value="" disabled selected>Choose Semester</option>
+                        </select>
+                        <label>Select Semester</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="wef" name="wef" type="text">
+                        <label for="wef">With Effet From</label>
+                    </div>
                 </div>
             </div>
         </div>
+        
         <div class="card-panel" id="subjectarea">
             <h4 class="header">ENTER SUBJECTS FOR THE SCHEME</h4>
-            <h6>(Small Desciption about the form)</h6>
+            <!-- <h6>(Small Desciption about the form)</h6> -->
             <div class="card-panel">
                 <div class="row">
                     <div class="input-field col s4">
@@ -113,33 +115,33 @@
                     </div>
                     <div class="input-field col s4">
                     <select name="prorselect" id="prorselect">
-                    <option value="" disabled selected>Choose your option</option>
+                    <option value="" disabled selected></option>
                     <option value="1">ORAL</option>
                     <option value="2">PRACTICAL ORAL</option>
                     </select>
-                    <label>SELECT IF ORAL OR PRACTICAL/ORAL</label>
+                    <label>ORAL OR PRACTICAL/ORAL</label>
                     </div>
                     <div class="input-field col s4" id="prordiv">
                         <input type="number" name="pror[]" id="pror">
-                        <label for="oral">ENTER PRACTICAL/ORAL MARKS</label>
+                        <label for="oral">PRACTICAL/ORAL MARKS</label>
                     </div>
                     <div class="input-field col s4" id="oraldiv">
                         <input type="number" name="oral[]" id="oral">
-                        <label for="oral">ENTER ORAL MARKS</label>
+                        <label for="oral">ORAL MARKS</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4" id="prordiv">
                         <input type="number" name="c_th[]" id="c_th">
-                        <label for="c_th">ENTER THEORY CREDITS</label>
+                        <label for="c_th">THEORY CREDITS</label>
                     </div>
                     <div class="input-field col s4" id="prordiv">
                         <input type="number" name="c_pt[]" id="c_pt">
-                        <label for="c_pt">ENTER PRACTICAL/ TERMWORK CREDITS</label>
+                        <label for="c_pt">PRACTICAL/ TERMWORK CREDITS</label>
                     </div>
                     <div class="input-field col s4" id="prordiv">
                         <input type="number" name="c_tut[]" id="c_tut">
-                        <label for="c_tut">ENTER TUTORIAL CREDITS</label>
+                        <label for="c_tut">TUTORIAL CREDITS</label>
                     </div>
                 </div>
                 <div class="row">
@@ -147,6 +149,7 @@
                         <button type="button" class="btn">CLICK TO VERIFY</button>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
@@ -165,7 +168,7 @@
 <script type="text/javascript" src="/assets/js/custom-script.js"></script>
 <script type="text/javascript" src="/assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
 <!--data-tables.js - Page Specific JS codes -->
-<script type="text/javascript" src="/assets/js/scripts/data-tables.js"></script>
+<!-- <script type="text/javascript" src="/assets/js/scripts/data-tables.js"></script> -->
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
 <script>
@@ -217,5 +220,13 @@
             $('select').material_select();
         });
     });
+
+    // FORM REPEATER JavaScript
+
+    $(document).ready(function(){
+
+    }); 
+
+    // FORM REPEATER JavaScript Ends
 </script>
 @endsection
