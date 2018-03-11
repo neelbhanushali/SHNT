@@ -39,10 +39,10 @@
                                         {{csrf_field()}}
                                         {{method_field('delete')}}
                                         <input type="hidden" name="id" value="{{$schemes->id}}">
-                                        <button class="btn-floating waves-effect waves-light editbtn">
+                                        <button type="button" onclick="editScheme(this)" class="btn-floating waves-effect waves-light editbtn">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button class="btn-floating waves-effect red waves-light deletebtn">
+                                        <button type="button" onclick="deleteScheme(this)" class="btn-floating waves-effect red waves-light deletebtn">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </form>
@@ -95,6 +95,64 @@
 @parent
 
 <script>
+    function editScheme(el) {
+        $(el).closest('form').find('input[name=_method]').val('patch');
+        
+        $('#schemeform').find('input[name=scheme]').val($(el).closest('tr').find('td:nth-child(1)').html());
+        $('#schemeform').find('input[name=wef]').val($(el).closest('tr').find('td:nth-child(2)').html());
+        $('#schemeform').append('{{method_field("patch")}}');
+        $('#schemeform').append('<input type="hidden" name="id" value="'+$(el).closest('tr').find('[name=id]').val()+'">');
+        $('#schememodal').find('h4').html('Update Scheme');
+        $('#schememodal').find('button.modal-action').html('Update Scheme');
+        
+        $('#schememodal').modal('open');
+        Materialize.updateTextFields();
+    }
+
+    function deleteScheme(el) {
+        var form = $(el).closest('form');
+        $.post(
+                '{{action("examcell@deletescheme")}}',
+                $(form).serialize(),
+                function(data) {
+                    data = JSON.parse(data);
+                    $('meta[name="csrf-token"]').attr('content', data._token);
+                    swal({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type
+                    }, function() {
+                        $(form).done();
+                        $('.datatable').DataTable().destroy();
+                        $('table.datatable tbody').empty();
+                        for(var i = 0; i < data.schemes.length; i++) {
+                            $('table.datatable tbody').append(`
+                                <tr>
+                                    <td>${data.schemes[i].scheme}</td>
+                                    <td>${data.schemes[i].wef}</td>
+                                    <td>
+                                        <form class="schemeactionform" method="post">
+                                            <input type="hidden" name="_token" value="${data._token}">
+                                            <input type="hidden" name="_method" value="patch">
+                                            <input type="hidden" name="id" value="${data.schemes[i].id}">
+                                            <button type="button" onclick="editScheme(this)" class="btn-floating waves-effect waves-light editbtn">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" onclick="deleteScheme(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>`);
+                        }
+                        
+                        var datatable = $('.datatable').DataTable();
+                        datatable.column('1').order('desc').draw();
+                    });
+                }
+            );
+    }
+
     $(document).ready(function() {
         datatable.column('1').order('desc').draw();
 
@@ -157,12 +215,12 @@
                                     <td>
                                         <form class="schemeactionform" method="post">
                                             <input type="hidden" name="_token" value="${data._token}">
-                                            <input type="hidden" name="_method" value="patch">
+                                            <input type="hidden" name="_method" value="delete">
                                             <input type="hidden" name="id" value="${data.schemes[i].id}">
-                                            <button class="btn-floating waves-effect waves-light editbtn">
+                                            <button type="button" onclick="editScheme(this)" class="btn-floating waves-effect waves-light editbtn">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button class="btn-floating waves-effect red waves-light deletebtn">
+                                            <button type="button" onclick="deleteScheme(this)" class="btn-floating waves-effect red waves-light deletebtn">
                                                 <i class="material-icons">delete</i>
                                             </button>
                                         </form>
@@ -177,80 +235,7 @@
             );
         });
 
-        $('.editbtn').click(function() {
-            $(this).closest('form').find('input[name=_method]').val('patch');
-        });
-
-        $('.deletebtn').click(function() {
-            $(this).closest('form').find('input[name=_method]').val('delete');
-        });
-
-        /** 
-         * The first request works perfectly (may it be c/u/d)
-         * But the next request, the form submits as an http requests
-         * This handler is not able to handle the submit event after the first request
-         * And I suppose it has something to do with the datatable reinitialization 
-         */
-
-        $('.schemeactionform').on('submit', function(e) {
-            e.preventDefault();
-            var form = $(this);
-            var method = $(this).find('input[name=_method]').val(); 
-
-            if(method == 'patch') {
-                $('#schemeform').find('input[name=scheme]').val($(form).closest('tr').find('td:nth-child(1)').html());
-                $('#schemeform').find('input[name=wef]').val($(form).closest('tr').find('td:nth-child(2)').html());
-                $('#schemeform').append('{{method_field("patch")}}');
-                $('#schemeform').append('<input type="hidden" name="id" value="'+$(form).find('[name=id]').val()+'">');
-                $('#schememodal').find('h4').html('Update Scheme');
-                $('#schememodal').find('button.modal-action').html('Update Scheme');
-                
-                $('#schememodal').modal('open');
-                Materialize.updateTextFields();
-            }
-
-            if(method == 'delete') {
-                $.post(
-                    '{{action("examcell@deletescheme")}}',
-                    $(form).serialize(),
-                    function(data) {
-                        data = JSON.parse(data);
-                        $('meta[name="csrf-token"]').attr('content', data._token);
-                        swal({
-                        title: data.title,
-                        text: data.message,
-                        type: data.type
-                        }, function() {
-                            $(form).done();
-                            $('table.datatable tbody').empty();
-                            for(var i = 0; i < data.schemes.length; i++) {
-                                $('table.datatable tbody').append(`
-                                    <tr>
-                                        <td>${data.schemes[i].scheme}</td>
-                                        <td>${data.schemes[i].wef}</td>
-                                        <td>
-                                            <form class="schemeactionform" method="post">
-                                                <input type="hidden" name="_token" value="${data._token}">
-                                                <input type="hidden" name="_method" value="patch">
-                                                <input type="hidden" name="id" value="${data.schemes[i].id}">
-                                                <button class="btn-floating waves-effect waves-light editbtn">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                                <button class="btn-floating waves-effect red waves-light deletebtn">
-                                                    <i class="material-icons">delete</i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>`);
-                            }
-                            $('.datatable').DataTable().destroy();
-                            var datatable = $('.datatable').DataTable();
-                            datatable.column('1').order('desc').draw();
-                        });
-                    }
-                );
-            }
-        });
+        
 
         $('.modal').modal({
             complete: function() {
@@ -267,5 +252,7 @@
             }
         });
     });
+
+    
 </script>
 @endsection
