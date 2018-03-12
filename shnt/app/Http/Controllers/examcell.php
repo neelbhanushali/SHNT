@@ -27,6 +27,33 @@ class examcell extends Controller
         return json_encode($return);
     }
     
+    public function updatescheme(Request $r) {
+        $scheme = \App\Scheme::find($r->input('id'));
+
+        $scheme->scheme = $r->input('scheme');
+        $scheme->wef = $r->input('wef');
+        $scheme->save();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Scheme successfully updated';
+        $return['schemes'] = \App\Scheme::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
+
+    public function deletescheme(Request $r) {
+        $scheme = \App\Scheme::find($r->input('id'));
+        $scheme->delete();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Scheme successfully deleted';
+        $return['schemes'] = \App\Scheme::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
+
     public function syllabus() {
         $user = \App\ExamCell::find(session()->get('username'));
         

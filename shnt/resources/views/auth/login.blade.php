@@ -53,6 +53,8 @@
     });
 
     $('#login-form').submit(function(e) {
+      if(!$(this).valid()) return;
+
       e.preventDefault();
       var form = $(this);
       var formdata = $(form).serialize();
@@ -65,10 +67,13 @@
           data = JSON.parse(data);
           $('meta[name="csrf-token"]').attr('content', data._token);
           if(data.login) {
-            swal(data.title, data.message, data.type);
-            setTimeout(function() {
+            swal({
+              title: data.title,
+              text: data.message,
+              type: data.type
+            }, function() {
               window.location.reload();
-            }, 2000);
+            });
           }
           else {
             swal(data.title, data.message, data.type);
