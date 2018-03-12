@@ -196,6 +196,38 @@
                 </li>
                 @endif
                 <!-- EXAM CELL NAVIGATION ENDS -->
+                <!-- STAFF NAVIGATION -->
+                @if(session()->get('type')=='staff')
+                <li class="bold">
+                  <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">library_books</i>
+                    <span class="nav-text">Configurations</span>
+                  </a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li>
+                        <a href="{{route('staff.forms.class')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Add Class</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{route('staff.forms.faculties')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Allocate Faculties</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{route('staff.forms.marks')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Add marks</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                @endif
+                <!-- STAFF NAVIGATION ENDS -->
 
               </ul>
             </li>
