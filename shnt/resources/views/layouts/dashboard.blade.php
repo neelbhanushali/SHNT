@@ -185,6 +185,12 @@
                           <span>Syllabus</span>
                         </a>
                       </li>
+                      <li>
+                        <a href="{{route('examcell.forms.seatno')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Seat Number</span>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </li>

@@ -19,7 +19,6 @@
         <div class="card-panel">
             <div id="table-datatables">
                 <h4 class="header">SCHEMES</h4>
-                <h6 class="header">This table will show you all the schemes available in the system.</h6> 
                 <div class="row">
                     <div class="col s12">
                         <table id="data-table-simple" class="datatable display" cellspacing="0">
