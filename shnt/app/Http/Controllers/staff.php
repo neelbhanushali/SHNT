@@ -19,7 +19,15 @@ class staff extends Controller
     }
 
     public function allocatefaculties(){
-        
+        if(!session()->has('logintoken'))
+            return redirect()->route('login');
+
+        if(session()->get('type') != 'staff')
+            return redirect()->route('dashboard');
+
+        $user = \App\Staff::find(session()->get('username'));
+
+        return view('staff.hod.allocatefaculties')->with(compact('user'));
     }
 
     public function addmarks(Request $r) {

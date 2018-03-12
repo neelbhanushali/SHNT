@@ -74,9 +74,9 @@ Route::middleware('loggedin')->group(function() {
     Route::get('addmarks', 'staff@getaddmarksform')->name('staff.forms.addmarks');
     Route::post('addmarks', 'staff@addmarks');
 
-    Route::get('class', 'staff@addclass')->name('staff.forms.class')
-    Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.forms.addmarks')
-    Route::get('addmarks', 'staff@addmarks')->name('staff.forms.marks')
+    Route::get('class', 'staff@addclass')->name('staff.forms.class');
+    Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.hod.allocatefaculties');
+    Route::get('addmarks', 'staff@addmarks')->name('staff.forms.marks');
 
 });
 
