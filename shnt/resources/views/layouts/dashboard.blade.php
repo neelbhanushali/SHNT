@@ -197,7 +197,7 @@
                 @endif
                 <!-- EXAM CELL NAVIGATION ENDS -->
                 <!-- STAFF NAVIGATION -->
-                @if(session()->get('type')=='staff')
+                @if(session()->get('type')=='staff' && $user->hod)
                 <li class="bold">
                   <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">library_books</i>
@@ -212,7 +212,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="{{route('staff.forms.faculties')}}">
+                        <a href="{{route('staff.forms.allocatefaculties')}}">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span>Allocate Faculties</span>
                         </a>
