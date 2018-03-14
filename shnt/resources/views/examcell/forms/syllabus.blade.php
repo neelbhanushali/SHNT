@@ -18,20 +18,38 @@
     <div class="col s12 m12 l12">
         <div class="card-panel">
             <div id="table-datatables">
-                <h4 class="header">SCHEMES</h4>
+                <h4 class="header">SYLLABUS</h4>
                 <div class="row">
                     <div class="col s12">
                         <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                             <thead>
                                 <tr>
                                     <td>SCHEME NAME</td>
-                                    <td>WITH EFFECT FROM</td>
+                                    <td>DEPARTMENT</td>
+                                    <td>SEMESTER</td>
+                                    <td>WEF</td>
+                                    <td></td>
                                 </tr>
                             </thead>
-                            @foreach($scheme = \App\Scheme::orderBy('wef','desc')->get() as $schemes)
+                            @foreach($examination = \App\Examination::all() as $e)
                             <tr>
-                                <td>{{$schemes->scheme}}</td>
-                                <td>{{$schemes->wef}}</td>
+                                <td>{{$e->scheme}}</td>
+                                <td>{{$e->department}}</td>
+                                <td>{{$e->semester}}</td>
+                                <td>{{$e->wef}}</td>
+                                <td>
+                                    <form action="" method="post">
+                                        {{csrf_field()}}
+                                        {{method_field('delete')}}
+                                        <input type="hidden" name="id" value="{{$e->id}}">
+                                        <button type="button" onclick="editScheme(this)" class="btn-floating waves-effect waves-light editbtn">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button type="button" onclick="deleteScheme(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </table>
@@ -41,11 +59,16 @@
         </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col s12 m12 l12">
-        <div class="card-panel">
-            <h4 class="header">SYLLABUS</h4>
+<div class="fixed-action-btn">
+<a id="schemeadd" class="btn-floating btn-large btn modal-trigger" href="#syllabusmodal">
+    <i class="material-icons">add</i>
+</a>
+</div>
+<!-- Modal Structure -->
+<div id="syllabusmodal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4 class="header">SYLLABUS</h4>
+        <form action="" method="post" id="syllabusform" onsubmit="syllabusSubmit(this, event)">
         <div class="row">
             <div class="input-field col s6">
                 <select>
@@ -75,30 +98,26 @@
                 <input id="wef" name="wef" type="text">
                 <label for="wef">With Effect From</label>
             </div>
-            <div class="input-field col s12">
-                <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
         </div>
-    </div>
-        <div class="card-panel" id="subjectarea">
+        <div class="" id="subjectarea">
             <h4 class="header">ENTER SUBJECTS FOR THE SCHEME</h4>
-            <div class="card-panel">
+            <div class="subject-card card-panel">
+                <fieldset>
+                <button type="button" onclick="removeSubjectPanel(this)" class="close-btn btn btn-floating red right"><i class="material-icons">close</i></button>
                 <div class="row">
                     <div class="input-field col s4">
                         <input id="idcode" type="text" name="code[]">
                         <label for="code[]">CODE</label>
-                    </div>
-                    <div class="input-field col s8">
-                        <input id="idtitle" type="text" name="title[]">
-                        <label for="title[]">TITLE</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
                         <input id="idshort" type="text" name="short[]">
                         <label for="short[]">SHORT FORM</label>
+                    </div>
+                    <div class="input-field col s8">
+                        <input id="idtitle" type="text" name="title[]">
+                        <label for="title[]">TITLE</label>
                     </div>
                     <div class="input-field col s4">
                         <input id="idia1" type="number" name="ia1[]">
@@ -108,25 +127,17 @@
                         <input id="idia2" type="number" name="ia2[]">
                         <label for="idia2">UNIT TEST 2</label>
                     </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s4">
                         <input id="idtw" type="number" name="tw[]">
                         <label for="idtw">TERMWORK</label>
                     </div>
-                    <div class="input-field col s4">
-                    <select name="prorselect" id="prorselect">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">ORAL</option>
-                    <option value="2">PRACTICAL ORAL</option>
-                    </select>
-                    <label>SELECT IF ORAL OR PRACTICAL/ORAL</label>
-                    </div>
-                    <div class="input-field col s4" id="prordiv">
+                </div>
+                <div class="row">
+                    <div class="input-field col s6" id="prordiv">
                         <input type="number" name="pror[]" id="pror">
                         <label for="oral">ENTER PRACTICAL/ORAL MARKS</label>
                     </div>
-                    <div class="input-field col s4" id="oraldiv">
+                    <div class="input-field col s6" id="oraldiv">
                         <input type="number" name="oral[]" id="oral">
                         <label for="oral">ENTER ORAL MARKS</label>
                     </div>
@@ -145,12 +156,15 @@
                         <label for="c_tut">ENTER TUTORIAL CREDITS</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6" id="prordiv">
-                        <button type="button" class="btn">CLICK TO VERIFY</button>
-                    </div>
-                </div>
+                </fieldset>
+            </div>
         </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" onclick="addSubjectPanel()" class="modal-action waves-effect waves-green btn">Add Subject</button>
+        <span> </span>
+        <button form="syllabusform" class="modal-action waves-effect waves-green btn">Add Syllabus</button>
     </div>
 </div>
 @endsection
@@ -165,46 +179,33 @@
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
 <!--custom-script.js - Add your own theme custom JS-->
-<script type="text/javascript" src="/assets/js/custom-script.js"></script>
 <script type="text/javascript" src="/assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/assets/js/custom-script.js"></script>
 <!--data-tables.js - Page Specific JS codes -->
 <script type="text/javascript" src="/assets/js/scripts/data-tables.js"></script>
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
 <script>
-    $(document).ready(function(){
-        $("#oraldiv").hide();
-        $("#prordiv").hide();
-    });
+    function removeSubjectPanel(el) {
+        if($('.subject-card').length == 1) return;
+
+        $(el).closest('.subject-card')[0].remove();
+    }
+
+    function addSubjectPanel() {
+        $('#subjectarea').append($('.subject-card')[0].outerHTML);
+        Materialize.updateTextFields();
+    }
+
+    function syllabusSubmit(el, e) {
+        e.preventDefault();
+        console.log(e);
+        console.log(el);
+        console.log($(el).serialize());
+    }
 
     $(document).ready(function(){
-        $("#prorselect").change(function(){
-            // console.log("inside "+$("#prorselect").val());
-            if($("#prorselect").val()=="1"){
-                // console.log("in "+$("#prorselect").val());
-                $("#oraldiv").show();
-                $("#oraldiv").removeAttr("disabled","disabled");
-                $("#prordiv").hide();
-                $("#prordiv").attr("disabled","disabled");                
-            }else if($("#prorselect").val()=="2"){
-                // console.log("in "+$("#prorselect").val());
-                $("#oraldiv").hide();
-                $("#oraldiv").attr("disabled","disabled");
-                $("#prordiv").show();
-                $("#prordiv").removeAttr("disabled","disabled");
-            }else if($("#prorselect").val()=="3"){
-                // console.log("in "+$("#prorselect").val());
-                $("#oraldiv").show();
-                $("#oraldiv").removeAttr("disabled","disabled");
-                $("#prordiv").show();
-                $("#prordiv").removeAttr("disabled","disabled");
-            }else{
-                $("#oraldiv").hide();
-                $("#oraldiv").attr("disabled","disabled");
-                $("#prordiv").hide();
-                $("#prordiv").attr("disabled","disabled");
-            }
-        })
+        
         $('select[name=department]').on('change',function() {
             var dept= $(this);
             var sem = $('select[name=semester]');
@@ -221,4 +222,12 @@
         });
     });
 </script>
+@endsection
+
+
+@section('css')
+@parent
+<style>
+    #subjectarea .subject-card:first-child .close-btn { display: none; }
+</style>
 @endsection

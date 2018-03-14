@@ -29,6 +29,11 @@
     <link href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet">
     <link href="/assets/vendors/flag-icon/css/flag-icon.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/vendors/sweetalert/dist/sweetalert.css">
+    <style>
+      form fieldset {
+        border: 0px;
+      }
+    </style>
     @show
   </head>
   <body class="layout-dark">
@@ -197,7 +202,7 @@
                 @endif
                 <!-- EXAM CELL NAVIGATION ENDS -->
                 <!-- STAFF NAVIGATION -->
-                @if(session()->get('type')=='staff')
+                @if(session()->get('type')=='staff' && $user->hod)
                 <li class="bold">
                   <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">library_books</i>
