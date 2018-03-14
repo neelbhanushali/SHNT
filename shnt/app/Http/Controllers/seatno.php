@@ -21,6 +21,9 @@ class seatno extends Controller
             "Shaikh Kalam",
             "Shaikh Shahbaz",
             "Prasad Suraj",
+            "Deshmukh Ravish",
+            "Shaikh Faizan",
+            "Shaikh Farhan",
             "Khan Shayana"
         );
 
