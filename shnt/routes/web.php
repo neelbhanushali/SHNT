@@ -92,6 +92,8 @@ Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
 
 // HARIS's ROUTES
 Route::get('seatno','examcell@seatno')->name('examcell.forms.seatno');
+Route::post('seatnolist','seatno@generateseatno');
+Route::get('harispractice','harispractice@demo');
 
 // DATA FILLING SCRIPTS
 Route::get('filldata', function() {

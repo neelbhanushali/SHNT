@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class seatno extends Controller
 {
-    public function generateseatno()
+    public function generateseatno(Request $r)
     {
         // Student::select('firstname')->where(['department' => 'co', 'sem' => '1'])->get();
+        // $alreadyDone = Seatno::select('flag')->where('department' => $r->department);
 
         $names = array(
             "Shaikh Haris",
@@ -18,34 +19,65 @@ class seatno extends Controller
             "Khan Bilal",
             "Gauri Javed",
             "Shaikh Kalam",
+            "Shaikh Shahbaz",
             "Prasad Suraj",
+            "Khan Shayana"
         );
-        $names = JSON.parse($names)
-        sort($names);
+
+        $name = array_sort_recursive($names);// sorting of an array
+        
+        $listCount =  sizeof($name); // finding length
     
-        $listCount =  sizeof($names);
+        $sem1 = array();
+        $sem2 = array();
+        $sem3 = array();
+        $sem4 = array();
+        $sem5 = array();
+        $sem6 = array();
+        $sem7 = array();
+        $sem8 = array();
     
-        $seatnoSem3 = array();
-    
-        $dept = "EE";
-        $sem = "3";
-        if ($dept == "CO")
-            $no = "COC3001";
-        elseif ($dept == "ME")
-            $no = "MEC3001";
-        elseif ($dept == "CE")
-            $no = "CEC3001";
-        elseif ($dept == "EE")
-            $no = "EEC3001";
-        elseif ($dept == "EX")
-            $no = "EXC3001";
-    
-        for ($i=0; $i < $listCount; $i++) { 
-            $seatnoSem3[$i] = $no++;
+        $dept = $r->department;//taking department from request
+        $schemes = $r->scheme;//taking scheme from request
+
+        $sch = '';
+        if ($schemes == 'CBSGS'){
+            $sch .= 'C';
         }
-        echo "Sr No &nbsp&nbsp&nbsp&nbsp Name &nbsp&nbsp&nbsp&nbsp Seat No &nbsp&nbsp&nbsp&nbsp Sign<br>";
-        for ($i=0,$token=1; $i < $listCount; $i++,$token++) { 
-            echo $token,"&nbsp&nbsp&nbsp&nbsp",$names[$i],"&nbsp&nbsp&nbsp&nbsp",$seatnoSem3[$i],"<br>";
+        else if($schemes == 'CBCGS'){
+            $sch .= 'CB';
+        }else{
+            $sch .= 'OLD';
         }
+        $no = '1001';
+        for ($j=0; $j < $listCount; $j++) {
+            $sem1[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem2[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem3[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem4[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem5[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem6[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem7[$j] = $dept.$sch.$no;
+            $no+=1000;
+            $sem8[$j] = $dept.$sch.$no;
+            $no -= 6999;
+        }
+
+        return view('examcell.forms.seatnolist',[ 'sem1' => $sem1,
+                                            'sem2' => $sem2,
+                                            'sem3' => $sem3,
+                                            'sem4' => $sem4,
+                                            'sem5' => $sem5,
+                                            'sem6' => $sem6,
+                                            'sem7' => $sem7,
+                                            'sem8' => $sem8,
+                                            'names' => $name
+                                        ]);
     }
 }
