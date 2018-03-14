@@ -212,7 +212,7 @@
                         </a>
                       </li>
                       <li>
-                        <a href="{{route('staff.forms.faculties')}}">
+                        <a href="{{route('staff.forms.allocatefaculties')}}">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span>Allocate Faculties</span>
                         </a>
