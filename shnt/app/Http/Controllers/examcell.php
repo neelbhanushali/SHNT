@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class examcell extends Controller
 {
+
     public function schemes() {
         $user = \App\ExamCell::find(session()->get('username'));
 
