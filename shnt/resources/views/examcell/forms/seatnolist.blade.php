@@ -5,6 +5,11 @@
 @section('css')
 @parent
 <link href="/assets/vendors/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
+<style>
+    .apnaDataTable{
+
+    }
+</style>
 @endsection
 
 @section('breadcrumbs')
@@ -23,7 +28,7 @@
         <h4 class="header">Seat Number List for Semester 1</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -55,7 +60,7 @@
         <h4 class="header">Seat Number List for Semester 2</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -87,7 +92,7 @@
         <h4 class="header">Seat Number List for Semester 3</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -119,7 +124,7 @@
         <h4 class="header">Seat Number List for Semester 4</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -151,7 +156,7 @@
         <h4 class="header">Seat Number List for Semester 5</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -183,7 +188,7 @@
         <h4 class="header">Seat Number List for Semester 6</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -215,7 +220,7 @@
         <h4 class="header">Seat Number List for Semester 7</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -247,7 +252,7 @@
         <h4 class="header">Seat Number List for Semester 8</h4>
         <div class="row">
             <div class="col s12">
-                <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                <table id="data-table-simple" class="display apnaDataTable" cellspacing="0">
                     <thead>
                     <tr>
                         <th>Sr Numbers</th>
@@ -284,9 +289,15 @@
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
 <!--custom-script.js - Add your own theme custom JS-->
 <script type="text/javascript" src="/assets/js/custom-script.js"></script>
+<!-- DataTables -->
 <script type="text/javascript" src="/assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
 <!--data-tables.js - Page Specific JS codes -->
 <script type="text/javascript" src="/assets/js/scripts/data-tables.js"></script>
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".apnaDataTable").dataTable();
+    });
+</script>    
 @endsection

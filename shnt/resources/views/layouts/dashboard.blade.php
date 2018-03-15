@@ -202,6 +202,16 @@
                 @endif
                 <!-- EXAM CELL NAVIGATION ENDS -->
                 <!-- STAFF NAVIGATION -->
+                @if(session()->get('type')=='staff')
+                <li class="bold">
+                  <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">library_books</i>
+                    <span class="nav-text">Add Marks</span>
+                  </a>
+                </li>
+                @endif
+                <!-- STAFF NAVIGATION ENDS -->
+                <!-- HOD NAVIGATION -->
                 @if(session()->get('type')=='staff' && $user->hod)
                 <li class="bold">
                   <a class="collapsible-header waves-effect waves-cyan">
@@ -222,17 +232,11 @@
                           <span>Allocate Faculties</span>
                         </a>
                       </li>
-                      <li>
-                        <a href="{{route('staff.forms.marks')}}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Add marks</span>
-                        </a>
-                      </li>
                     </ul>
                   </div>
                 </li>
                 @endif
-                <!-- STAFF NAVIGATION ENDS -->
+                <!-- HOD NAVIGATION ENDS -->
 
               </ul>
             </li>
