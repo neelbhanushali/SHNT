@@ -70,5 +70,11 @@ class harispractice extends Controller
         // for ($i=0,$token=1; $i < $listCount; $i++,$token++) { 
         //     echo $token,"&nbsp&nbsp&nbsp&nbsp",$names[$i],"&nbsp&nbsp&nbsp&nbsp",$sem3[$i],"<br>";
         // }
+        
+        $q = \DB::table('examinations')
+            ->join('courses','examinations.id', '=', 'courses.examination_id')
+            ->select('examinations.*', 'courses.*')
+            ->get();
+            dd($q);
     }
 }

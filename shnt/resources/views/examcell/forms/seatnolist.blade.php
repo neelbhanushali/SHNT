@@ -28,6 +28,10 @@
         <h4 class="header">Seat Number List for Semester 1</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -60,6 +64,10 @@
         <h4 class="header">Seat Number List for Semester 2</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple2" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -92,6 +100,10 @@
         <h4 class="header">Seat Number List for Semester 3</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple3" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -124,6 +136,10 @@
         <h4 class="header">Seat Number List for Semester 4</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple4" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -156,6 +172,10 @@
         <h4 class="header">Seat Number List for Semester 5</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple5" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -188,6 +208,10 @@
         <h4 class="header">Seat Number List for Semester 6</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple6" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -220,6 +244,10 @@
         <h4 class="header">Seat Number List for Semester 7</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple7" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -252,6 +280,10 @@
         <h4 class="header">Seat Number List for Semester 8</h4>
         <div class="row">
             <div class="col s12">
+<<<<<<< HEAD
+=======
+                <!-- <table id="data-table-simple" class="display apnaDataTable" cellspacing="0"> -->
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
                 <table id="data-table-simple8" class="display" cellspacing="0">
                     <thead>
                     <tr>
@@ -296,6 +328,12 @@
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
 <script>
+<<<<<<< HEAD
+=======
+    // $(document).ready(function(){
+    //     $(".apnaDataTable").dataTable();
+    // });
+>>>>>>> 2a939143fa6d9e924c6a6eaacfc58b388bc1d4cf
     // $(document).ready( function () {
     //     // $('table').DataTable();
     //     $('#data-table-simple, #data-table-simple2, #data-table-simple3, #data-table-simple4, #data-table-simple5, #data-table-simple6, #data-table-simple7, #data-table-simple8').dataTable();
