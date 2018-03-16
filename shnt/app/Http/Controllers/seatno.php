@@ -10,7 +10,10 @@ class seatno extends Controller
     {
         // Student::select('firstname')->where(['department' => 'co', 'sem' => '1'])->get();
         // $alreadyDone = Seatno::select('flag')->where('department' => $r->department);
-
+        // DB::table('examinations')
+        //     ->join('courses','examinations.id', '=', 'courses.examination_id')
+        //     ->select('examinations.scheme', 'courses.short')
+        //     ->get();
         $names = array(
             "Shaikh Haris",
             "Khatri Taufeeq",
