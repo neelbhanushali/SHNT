@@ -42,11 +42,6 @@ Route::middleware('loggedin')->group(function() {
 
     Route::get('profile', 'user@profile')->name('profile');
     
-    
-    
-    
-
-
     /**
      * Examination form
      * Add examination
@@ -71,11 +66,11 @@ Route::middleware('loggedin')->group(function() {
     
     
     // STAFF
-    Route::get('addmarks', 'staff@getaddmarksform')->name('staff.forms.addmarks');
-    Route::post('addmarks', 'staff@addmarks');
-    Route::get('class', 'staff@addclass')->name('staff.forms.class');
-    Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.forms.allocatefaculties');
-    Route::get('addmarks', 'staff@addmarks')->name('staff.forms.marks');
+    // Route::get('addmarks', 'staff@getaddmarksform')->name('staff.forms.addmarks');
+    // Route::post('addmarks', 'staff@addmarks');
+    // Route::get('class', 'staff@addclass')->name('staff.forms.class');
+    // Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.forms.allocatefaculties');
+    // Route::get('addmarks', 'staff@addmarks')->name('staff.forms.marks');
 
 });
 
@@ -85,6 +80,23 @@ Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
 Route::post('schemes','examcell@addscheme');
 Route::patch('schemes','examcell@updatescheme');
 Route::delete('schemes','examcell@deletescheme');
+// HOD ROUTES
+    // addclass route
+    Route::get('addclass','staff@addclass')->name('staff.forms.addclass');
+    // gets roomnumbers dynamically route
+    // Route::post('/getRoomNo',function(){
+    //     if(Request::ajax()){
+    //         return Reesponse::json(Request::all());
+    //     }
+    // });
+
+    // Sohail Test route
+    Route::post('/kamehamehaa',function(Request $r){
+        $id = $_POST['id'];
+        $rooms = \App\Classrooms::where('floor',$id)->select('roomnumber')->get();
+         
+        return $response;
+    });
 
 
 Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
@@ -97,6 +109,164 @@ Route::get('harispractice','harispractice@demo');
 
 // DATA FILLING SCRIPTS
 Route::get('filldata', function() {
+
+
+    // CLASSROOM ADDITIONS STARTS
+    // LH : Learning Hall
+    // PR : Practical Lab
+    // DWH : Drawing Hall
+    // SMH : Seminar Hall
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "406";
+    $classroom->floor = "3";
+    $classroom->dept = "CO";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "405";
+    $classroom->floor = "3";
+    $classroom->dept = "CO";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "404";
+    $classroom->floor = "3";
+    $classroom->dept = "CO";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "403";
+    $classroom->floor = "3";
+    $classroom->dept = "CO";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "106";
+    $classroom->floor = "0";
+    $classroom->dept = "ME";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "105";
+    $classroom->floor = "0";
+    $classroom->dept = "ME";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "104";
+    $classroom->floor = "0";
+    $classroom->dept = "ME";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "103";
+    $classroom->floor = "0";
+    $classroom->dept = "ME";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "206";
+    $classroom->floor = "1";
+    $classroom->dept = "CE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "205";
+    $classroom->floor = "1";
+    $classroom->dept = "CE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "204";
+    $classroom->floor = "1";
+    $classroom->dept = "CE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "203";
+    $classroom->floor = "1";
+    $classroom->dept = "CE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "306";
+    $classroom->floor = "2";
+    $classroom->dept = "EE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "305";
+    $classroom->floor = "2";
+    $classroom->dept = "EE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "304";
+    $classroom->floor = "2";
+    $classroom->dept = "EE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "303";
+    $classroom->floor = "2";
+    $classroom->dept = "EE";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "301";
+    $classroom->floor = "2";
+    $classroom->dept = "ET";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "302";
+    $classroom->floor = "2";
+    $classroom->dept = "ET";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "307";
+    $classroom->floor = "2";
+    $classroom->dept = "ET";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    $classroom = new \App\Classrooms();
+    $classroom->roomnumber = "308";
+    $classroom->floor = "2";
+    $classroom->dept = "ET";
+    $classroom->capacity = "70";
+    $classroom->type = "LH";
+    $classroom->save();
+    // CLASSROOM ADDITION ENDS
+
+    
+    // Allocation of classes starts
+    $ac = new \App\AllottedClass();
+    $ac->room = "406";
+    $ac->name="BECO";
+    $ac->dept="CO";
+    $ac->save();
+    // Allocation of classes ends
+
 
     // STUDENT ADDING SCRIPTS
 

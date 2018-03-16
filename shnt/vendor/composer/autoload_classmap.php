@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Activation' => $baseDir . '/app/Activation.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
+    'App\\AllottedClass' => $baseDir . '/app/AllottedClass.php',
+    'App\\Classrooms' => $baseDir . '/app/Classrooms.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Course' => $baseDir . '/app/Course.php',
     'App\\Department' => $baseDir . '/app/Department.php',
@@ -24,6 +26,9 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ajax' => $baseDir . '/app/Http/Controllers/ajax.php',
     'App\\Http\\Controllers\\examcell' => $baseDir . '/app/Http/Controllers/examcell.php',
+    'App\\Http\\Controllers\\harispractice' => $baseDir . '/app/Http/Controllers/harispractice.php',
+    'App\\Http\\Controllers\\scheme' => $baseDir . '/app/Http/Controllers/scheme.php',
+    'App\\Http\\Controllers\\seatno' => $baseDir . '/app/Http/Controllers/seatno.php',
     'App\\Http\\Controllers\\staff' => $baseDir . '/app/Http/Controllers/staff.php',
     'App\\Http\\Controllers\\student' => $baseDir . '/app/Http/Controllers/student.php',
     'App\\Http\\Controllers\\user' => $baseDir . '/app/Http/Controllers/user.php',

@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    @section('meta')
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+    @show
     <title>@yield('page') | {{env('APP_NAME')}}</title>
     <!-- Favicons-->
     <link rel="icon" href="/assets/images/favicon/favicon-32x32.png" sizes="32x32">
@@ -221,13 +223,13 @@
                   <div class="collapsible-body">
                     <ul>
                       <li>
-                        <a href="{{route('staff.forms.class')}}">
+                        <a href="{{route('staff.forms.addclass')}}">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span>Add Class</span>
                         </a>
                       </li>
                       <li>
-                        <a href="{{route('staff.forms.allocatefaculties')}}">
+                        <a href="">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span>Allocate Faculties</span>
                         </a>

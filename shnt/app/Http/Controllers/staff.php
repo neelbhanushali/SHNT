@@ -6,46 +6,65 @@ use Illuminate\Http\Request;
 
 class staff extends Controller
 {
-    public function getaddmarksform() {
-        if(!session()->has('logintoken'))
-            return redirect()->route('login');
 
-        if(session()->get('type') != 'staff')
-            return redirect()->route('dashboard');
-
-        $user = \App\Staff::find(session()->get('username'));
-
-        return view('staff.forms.addmarks')->with(compact('user'));
-    }
-
-    public function allocatefaculties(){
-        if(!session()->has('logintoken'))
-            return redirect()->route('login');
-
-        if(session()->get('type') != 'staff')
-            return redirect()->route('dashboard');
-
-        $user = \App\Staff::find(session()->get('username'));
-
-        return view('staff.hod.allocatefaculties')->with(compact('user'));
-    }
-
-    public function addmarks(Request $r) {
-        \DB::table('scores')->where(['form_id'=>$r->input('form_id'), 'course_id'=>$r->input('course_id')])->update([
-            'ia1' => $r->input('ia1'),
-            'ia2' => $r->input('ia2'),
-            'ese' => $r->input('ese'),
-            'tw' => $r->input('tw'),
-            'oral' => $r->input('oral'),
-            'pror' => $r->input('pror'),
-        ]);
-
-        session([
-            'messagetype' => 'success',
-            'icon' => 'check',
-            'message' => 'Marks updated successfully'
-            ]);
+    // SOHAIL'S CHANGES DO NOT DELETE STARTS
+    
+    public function addclass(){
+        // if(!session()->has('logintoken')){
+        //     return redirect()->route('login');
+        // }
         
-        return redirect()->route('staff.forms.addmarks');
+        // if(!session()->get('type') != 'staff'){
+        //     return redirect()->route('dashboard');                
+        // }
+
+        $user = \App\Staff::find(session()->get('username'));
+        return view('staff.forms.addclass')->with(compact('user'));
     }
+
+    // SOHAIL'S CHANGES DO NOT DELETE ENDS
+
+
+    // public function getaddmarksform() {
+    //     if(!session()->has('logintoken'))
+    //         return redirect()->route('login');
+
+    //     if(session()->get('type') != 'staff')
+    //         return redirect()->route('dashboard');
+
+    //     $user = \App\Staff::find(session()->get('username'));
+
+    //     return view('staff.forms.addmarks')->with(compact('user'));
+    // }
+
+    // public function allocatefaculties(){
+    //     if(!session()->has('logintoken'))
+    //         return redirect()->route('login');
+
+    //     if(session()->get('type') != 'staff')
+    //         return redirect()->route('dashboard');
+
+    //     $user = \App\Staff::find(session()->get('username'));
+
+    //     return view('staff.hod.allocatefaculties')->with(compact('user'));
+    // }
+
+    // public function addmarks(Request $r) {
+    //     \DB::table('scores')->where(['form_id'=>$r->input('form_id'), 'course_id'=>$r->input('course_id')])->update([
+    //         'ia1' => $r->input('ia1'),
+    //         'ia2' => $r->input('ia2'),
+    //         'ese' => $r->input('ese'),
+    //         'tw' => $r->input('tw'),
+    //         'oral' => $r->input('oral'),
+    //         'pror' => $r->input('pror'),
+    //     ]);
+
+    //     session([
+    //         'messagetype' => 'success',
+    //         'icon' => 'check',
+    //         'message' => 'Marks updated successfully'
+    //         ]);
+        
+    //     return redirect()->route('staff.forms.addmarks');
+    // }
 }

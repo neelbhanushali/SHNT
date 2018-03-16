@@ -313,6 +313,8 @@ class ComposerStaticInit7717679245840aae6af969c80905bec1
     public static $classMap = array (
         'App\\Activation' => __DIR__ . '/../..' . '/app/Activation.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
+        'App\\AllottedClass' => __DIR__ . '/../..' . '/app/AllottedClass.php',
+        'App\\Classrooms' => __DIR__ . '/../..' . '/app/Classrooms.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Course' => __DIR__ . '/../..' . '/app/Course.php',
         'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
@@ -329,6 +331,9 @@ class ComposerStaticInit7717679245840aae6af969c80905bec1
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ajax' => __DIR__ . '/../..' . '/app/Http/Controllers/ajax.php',
         'App\\Http\\Controllers\\examcell' => __DIR__ . '/../..' . '/app/Http/Controllers/examcell.php',
+        'App\\Http\\Controllers\\harispractice' => __DIR__ . '/../..' . '/app/Http/Controllers/harispractice.php',
+        'App\\Http\\Controllers\\scheme' => __DIR__ . '/../..' . '/app/Http/Controllers/scheme.php',
+        'App\\Http\\Controllers\\seatno' => __DIR__ . '/../..' . '/app/Http/Controllers/seatno.php',
         'App\\Http\\Controllers\\staff' => __DIR__ . '/../..' . '/app/Http/Controllers/staff.php',
         'App\\Http\\Controllers\\student' => __DIR__ . '/../..' . '/app/Http/Controllers/student.php',
         'App\\Http\\Controllers\\user' => __DIR__ . '/../..' . '/app/Http/Controllers/user.php',
