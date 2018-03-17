@@ -67,6 +67,10 @@ class examcell extends Controller
         return view('examcell.forms.syllabus')->with(compact('user'));
     }
 
+    public function getsyllabus($id) {
+        return  json_encode(\DB::table('examinations')->where('examinations.id', $id)->join('courses', 'examinations.id', '=', 'courses.examination_id')->get());
+    }
+
     public function getexaminationform() {
         if(!session()->has('logintoken'))
             return redirect()->route('login');
