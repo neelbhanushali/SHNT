@@ -165,7 +165,7 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" onclick="addSubjectPanel()" class="modal-action waves-effect waves-green btn">Add Subject</button>
+        <button type="button" onclick="addSubjectPanel()" class="waves-effect waves-green btn">Add Subject</button>
         <span> </span>
         <button form="syllabusform" class="modal-action waves-effect waves-green btn">Add Syllabus</button>
     </div>
@@ -331,6 +331,72 @@
 
         $('select[name=department]').on('change', function() {
             updateSemester(this);
+        });
+
+        $('#syllabusform').validate({
+            rules: {
+                scheme: 'required',
+                department: 'required',
+                semester: 'required',
+                wef: 'required',
+                "code[]": 'required',
+                "short[]": 'required',
+                "title[]": 'required'
+            }
+        });
+
+        $('#syllabusform').on('submit', function(e) {
+            if(!$(this).valid()) return;
+
+            e.preventDefault();
+            var form = $(this);
+            var formdata = $(form).serialize();
+            $(form).loading();
+
+            $.post(
+                $(form).attr('action'),
+                formdata,
+                function(data) {
+                    data = JSON.parse(data);
+                    $('meta[name="csrf-token"]').attr('content', data._token);
+                    swal({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type
+                    }, function() {
+                        $(form).done();
+                        $('#syllabusmodal').modal('close');
+                        Materialize.updateTextFields();
+                        $('.datatable').DataTable().destroy();
+                        $('table.datatable tbody').empty();
+                        for(var i = 0; i < data.syllabus.length; i++) {
+                            $('table.datatable tbody').append(`
+                                <tr>
+                                    <td>${data.syllabus[i].scheme}</td>
+                                    <td>${data.syllabus[i].department}</td>
+                                    <td>${data.syllabus[i].semester}</td>
+                                    <td>${data.syllabus[i].wef}</td>
+                                    <td>
+                                        <form action="" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('delete')}}
+                                            <input type="hidden" name="id" value="${data.syllabus[i].id}">
+                                            <button type="button" onclick="editSyllabus(this)" class="btn-floating waves-effect waves-light editbtn">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" onclick="deleteSyllabus(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            `);
+                        }
+                        
+                        var datatable = $('.datatable').DataTable();
+                    });
+                }
+            );
         });
     });
 </script>
