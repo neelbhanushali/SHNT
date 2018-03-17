@@ -68,7 +68,19 @@ class examcell extends Controller
     }
 
     public function getsyllabus($id) {
-        return  json_encode(\DB::table('examinations')->where('examinations.id', $id)->join('courses', 'examinations.id', '=', 'courses.examination_id')->get());
+        return  json_encode(\DB::table('examinations')->where('examinations.id', $id)->leftJoin('courses', 'examinations.id', '=', 'courses.examination_id')->get());
+    }
+
+    public function deletesyllabus(Request $r) {
+        $examination = \App\Examination::find($r->input('id'));
+        $examination->delete();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Syllabus successfully deleted';
+        $return['syllabus'] = \App\Examination::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
     }
 
     public function getexaminationform() {

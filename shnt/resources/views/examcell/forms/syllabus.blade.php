@@ -178,6 +178,9 @@
 <script>
     function editSyllabus(el) {
         var form = $(el).closest('form');
+        
+        $(form).find('input[name=_method]').val('patch');
+        
         var id = $(form).find('[name=id]').val();
 
         // getting data
@@ -225,16 +228,57 @@
             }
         );
         
-        // $('#syllabusform').find('input[name=scheme]').val($(el).closest('tr').find('td:nth-child(1)').html());
-        // $('#syllabusform').find('input[name=wef]').val($(el).closest('tr').find('td:nth-child(2)').html());
-        // $('#syllabusform').append('{{method_field("patch")}}');
-        // $('#syllabusform').append('<input type="hidden" name="id" value="'+$(el).closest('tr').find('[name=id]').val()+'">');
-        
         $('#syllabusmodal').find('h4').html('Update Syllabus');
         $('#syllabusmodal').find('button.modal-action').html('Update Syllabus');
         
         $('#syllabusmodal').modal('open');
         Materialize.updateTextFields();
+    }
+
+        function deleteSyllabus(el) {
+        var form = $(el).closest('form');
+        $.post(
+                '{{action("examcell@deletesyllabus")}}',
+                $(form).serialize(),
+                function(data) {
+                    data = JSON.parse(data);
+                    $('meta[name="csrf-token"]').attr('content', data._token);
+                    swal({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type
+                    }, function() {
+                        $(form).done();
+                        $('.datatable').DataTable().destroy();
+                        $('table.datatable tbody').empty();
+                        for(var i = 0; i < data.syllabus.length; i++) {
+                            $('table.datatable tbody').append(`
+                                <tr>
+                                    <td>${data.syllabus[i].scheme}</td>
+                                    <td>${data.syllabus[i].department}</td>
+                                    <td>${data.syllabus[i].semester}</td>
+                                    <td>${data.syllabus[i].wef}</td>
+                                    <td>
+                                        <form action="" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('delete')}}
+                                            <input type="hidden" name="id" value="${data.syllabus[i].id}">
+                                            <button type="button" onclick="editSyllabus(this)" class="btn-floating waves-effect waves-light editbtn">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" onclick="deleteSyllabus(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            `);
+                        }
+                        
+                        var datatable = $('.datatable').DataTable();
+                    });
+                }
+            );
     }
 
     function removeSubjectPanel(el) {

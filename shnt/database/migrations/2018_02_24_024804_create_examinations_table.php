@@ -20,6 +20,7 @@ class CreateExaminationsTable extends Migration
             $table->decimal('semester', 2, 0);
             $table->string('wef', 10);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

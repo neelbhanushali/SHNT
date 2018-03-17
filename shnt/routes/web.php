@@ -101,6 +101,9 @@ Route::delete('schemes','examcell@deletescheme');
 
 Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
 Route::get('getsyllabus/{id}','examcell@getsyllabus');
+Route::post('syllabus','examcell@addsyllabus');
+Route::patch('syllabus','examcell@updatesyllabus');
+Route::delete('syllabus','examcell@deletesyllabus');
 
 
 // HARIS's ROUTES
