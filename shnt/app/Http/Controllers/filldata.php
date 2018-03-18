@@ -7,15 +7,194 @@ use Illuminate\Http\Request;
 class filldata extends Controller
 {
     public function save(){
+
+        // class room record adding
+
+        // ME department
+        $al = new \App\Classrooms();
+        $al->roomnumber = 103;
+        $al->floor = 0;
+        $al->dept = "ME";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 104;
+        $al->floor = 0;
+        $al->dept = "ME";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 105;
+        $al->floor = 0;
+        $al->dept = "ME";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 106;
+        $al->floor = 0;
+        $al->dept = "ME";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        // CE department
+        $al = new \App\Classrooms();
+        $al->roomnumber = 203;
+        $al->floor = 1;
+        $al->dept = "CE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 204;
+        $al->floor = 1;
+        $al->dept = "CE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 205;
+        $al->floor = 1;
+        $al->dept = "CE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 206;
+        $al->floor = 1;
+        $al->dept = "CE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        // EE department
+        $al = new \App\Classrooms();
+        $al->roomnumber = 303;
+        $al->floor = 2;
+        $al->dept = "EE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 304;
+        $al->floor = 2;
+        $al->dept = "EE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 305;
+        $al->floor = 2;
+        $al->dept = "EE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 306;
+        $al->floor = 2;
+        $al->dept = "EE";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        // ET department
+        $al = new \App\Classrooms();
+        $al->roomnumber = 301;
+        $al->floor = 2;
+        $al->dept = "ET";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 302;
+        $al->floor = 2;
+        $al->dept = "ET";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 307;
+        $al->floor = 2;
+        $al->dept = "ET";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 308;
+        $al->floor = 2;
+        $al->dept = "ET";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        // CO department
+        $al = new \App\Classrooms();
+        $al->roomnumber = 403;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 404;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 405;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        $al = new \App\Classrooms();
+        $al->roomnumber = 406;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
+
+        // alloted classes record adding
+        $al = new \App\AllottedClass();
+        $al->room = 406;
+        $al->name = "BECO";
+        $al->dept = "CO";
+        $al->save();
+
         // STUDENT ADDING SCRIPTS
 
         // CO STUDENTS
         $student = new \App\Student();
-        $student->firstname = "Bhanushali Neelkumar Premji";
+        $student->firstname = "Neelkumar";
+        $student->middlename = "Premji";
+        $student->lastname = "Bhanushali";
+        $student->mothername = "Padma";
         $student->rollnumber = "13CO19";
         $student->email = "neal.bhanushali@gmail.com";
         $student->contact = "9930219853";
         $student->department = "CO";
+        $student->class = 406;
         $student->save();
 
         $user = new \App\User();
@@ -28,11 +207,14 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Khan Sohail Ahmed Raees Ahmed";
+        $student->firstname = "Sohail Ahmed";
+        $student->middlename = "Raees Ahmed";
+        $student->lastname = "Khan";
         $student->rollnumber = "14CO28";
         $student->email = "khan.sohail898@gmail.com";
         $student->contact = "7045414593";
         $student->department = "CO";
+        $student->class = 406;
         $student->save();
 
         $user = new \App\User();
@@ -45,11 +227,15 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Shaikh Harris Gulam Rasul";
+        $student->firstname = "Haris";
+        $student->middlename = "Gulam Rasool";
+        $student->lastname = "Shaikh";
+        $student->mothername = "Rashida";
         $student->rollnumber = "15DCO67";
         $student->email = "compilerharris@gmail.com";
         $student->contact = "9192939493";
         $student->department = "CO";
+        $student->class = 406;
         $student->save();
 
         $user = new \App\User();
@@ -63,7 +249,10 @@ class filldata extends Controller
 
         // ME STUDENTS
         $student = new \App\Student();
-        $student->firstname = "Bhanushali Neelkumar Premji";
+        $student->firstname = "Neelkumar";
+        $student->middlename = "Premji";
+        $student->lastname = "Bhanushali";
+        $student->mothername = "Padma";
         $student->rollnumber = "13ME19";
         $student->email = "bhanushalineal@gmail.com";
         $student->contact = "9930219855";
@@ -80,7 +269,9 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Khan Sohail Ahmed Raees Ahmed";
+        $student->firstname = "Sohail Ahmed";
+        $student->middlename = "Raees Ahmed";
+        $student->lastname = "Khan";
         $student->rollnumber = "14ME28";
         $student->email = "sohailkhan898@gmail.com";
         $student->contact = "7045414595";
@@ -97,7 +288,10 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Shaikh Harris Gulam Rasul";
+        $student->firstname = "Haris";
+        $student->middlename = "Gulam Rasool";
+        $student->lastname = "Shaikh";
+        $student->mothername = "Rashida";
         $student->rollnumber = "15DME67";
         $student->email = "harriscompiler@gmail.com";
         $student->contact = "9192939491";
@@ -115,7 +309,10 @@ class filldata extends Controller
 
         // CE STUDENTS
         $student = new \App\Student();
-        $student->firstname = "Bhanushali Neelkumar Premji";
+        $student->firstname = "Neelkumar";
+        $student->middlename = "Premji";
+        $student->lastname = "Bhanushali";
+        $student->mothername = "Padma";
         $student->rollnumber = "13CE19";
         $student->email = "nealbhanushali1@gmail.com";
         $student->contact = "9830219855";
@@ -132,7 +329,9 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Khan Sohail Ahmed Raees Ahmed";
+        $student->firstname = "Sohail Ahmed";
+        $student->middlename = "Raees Ahmed";
+        $student->lastname = "Khan";
         $student->rollnumber = "14CE28";
         $student->email = "sohailkhan899@gmail.com";
         $student->contact = "7145414595";
@@ -149,7 +348,10 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Shaikh Harris Gulam Rasul";
+        $student->firstname = "Haris";
+        $student->middlename = "Gulam Rasool";
+        $student->lastname = "Shaikh";
+        $student->mothername = "Rashida";
         $student->rollnumber = "15DCE67";
         $student->email = "harriscompilerr@gmail.com";
         $student->contact = "9192939443";
@@ -167,7 +369,10 @@ class filldata extends Controller
 
         // EE STUDENTS
         $student = new \App\Student();
-        $student->firstname = "Bhanushali Neelkumar Premji";
+        $student->firstname = "Neelkumar";
+        $student->middlename = "Premji";
+        $student->lastname = "Bhanushali";
+        $student->mothername = "Padma";
         $student->rollnumber = "13EE19";
         $student->email = "nealbhanushali2@gmail.com";
         $student->contact = "9880219855";
@@ -184,7 +389,9 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Khan Sohail Ahmed Raees Ahmed";
+        $student->firstname = "Sohail Ahmed";
+        $student->middlename = "Raees Ahmed";
+        $student->lastname = "Khan";
         $student->rollnumber = "14EE28";
         $student->email = "sohailkhan900@gmail.com";
         $student->contact = "7115414595";
@@ -201,7 +408,10 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Shaikh Harris Gulam Rasul";
+        $student->firstname = "Haris";
+        $student->middlename = "Gulam Rasool";
+        $student->lastname = "Shaikh";
+        $student->mothername = "Rashida";
         $student->rollnumber = "15DEE67";
         $student->email = "harriscompilerrr@gmail.com";
         $student->contact = "9112939493";
@@ -219,7 +429,10 @@ class filldata extends Controller
 
         // EXTC STUDENTS
         $student = new \App\Student();
-        $student->firstname = "Bhanushali Neelkumar Premji";
+        $student->firstname = "Neelkumar";
+        $student->middlename = "Premji";
+        $student->lastname = "Bhanushali";
+        $student->mothername = "Padma";
         $student->rollnumber = "13ET19";
         $student->email = "nealbhanushali3@gmail.com";
         $student->contact = "9838219855";
@@ -236,7 +449,9 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Khan Sohail Ahmed Raees Ahmed";
+        $student->firstname = "Sohail Ahmed";
+        $student->middlename = "Raees Ahmed";
+        $student->lastname = "Khan";
         $student->rollnumber = "14ET28";
         $student->email = "sohailkhan901@gmail.com";
         $student->contact = "7125414595";
@@ -253,7 +468,10 @@ class filldata extends Controller
 
         
         $student = new \App\Student();
-        $student->firstname = "Shaikh Harris Gulam Rasul";
+        $student->firstname = "Haris";
+        $student->middlename = "Gulam Rasool";
+        $student->lastname = "Shaikh";
+        $student->mothername = "Rashida";
         $student->rollnumber = "15DET67";
         $student->email = "harriscompilerrrr@gmail.com";
         $student->contact = "9191969493";
@@ -941,6 +1159,25 @@ class filldata extends Controller
         $ef->examination_id = 1;
         $ef->rollnumber = "13CO19";
         $ef->seatnumber = "COC5011";
+        $ef->month = "december";
+        $ef->kt = 1;
+        $ef->half = 2;
+        $ef->year = 2015;
+        $ef->save();
+
+        $ef = new \App\ExamForm();
+        $ef->examination_id = 1;
+        $ef->rollnumber = "15DCO67";
+        $ef->seatnumber = "COC5012";
+        $ef->month = "december";
+        $ef->half = 2;
+        $ef->year = 2015;
+        $ef->save();
+
+        $ef = new \App\ExamForm();
+        $ef->examination_id = 1;
+        $ef->rollnumber = "14CO28";
+        $ef->seatnumber = "COC5013";
         $ef->month = "december";
         $ef->half = 2;
         $ef->year = 2015;

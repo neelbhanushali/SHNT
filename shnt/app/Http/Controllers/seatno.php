@@ -8,12 +8,35 @@ class seatno extends Controller
 {
     public function generateseatno(Request $r)
     {
-        // Student::select('firstname')->where(['department' => 'co', 'sem' => '1'])->get();
+        $dept = $r->department;//taking department from request
+        $schemes = $r->scheme;//taking scheme from request
+
+        // $sem8temp = \App\AllottedClass::select('room')->where('name', 'BE'.$dept)->get();
+        // $sem8names = \App\Student::select('firstname')->where(['department' => $dept, 'class' => $sem8temp[0]->room])->get();
+
+        // query to get list of students of those who are in $dept department and studying in last year
+        $sem8names = \DB::table('students')
+                    ->join('allotted_classes', 'students.class', '=', 'allotted_classes.room')
+                    ->join('exam_forms','students.rollnumber','=','exam_forms.rollnumber')
+                    ->select(['lastname','firstname','middlename','mothername'])
+                    ->where(['students.department' => $dept,'allotted_classes.name' => 'BE'.$dept])
+                    ->orderBy('kt')
+                    ->orderBy('lastname')
+                    ->orderBy('firstname')
+                    ->orderBy('middlename')
+                    ->orderBy('mothername')
+                    ->get();
+
         // $alreadyDone = Seatno::select('flag')->where('department' => $r->department);
         // DB::table('examinations')
         //     ->join('courses','examinations.id', '=', 'courses.examination_id')
         //     ->select('examinations.scheme', 'courses.short')
         //     ->get();
+        $sem8namesarray = array();
+        $i = 0;
+        foreach ($sem8names as $semt){
+            $sem8namesarray[$i++] = $semt->lastname.' '.$semt->firstname.' '.$semt->middlename.' '.$semt->mothername;
+        }
         $names = array(
             "Shaikh Haris",
             "Khatri Taufeeq",
@@ -42,9 +65,6 @@ class seatno extends Controller
         $sem6 = array();
         $sem7 = array();
         $sem8 = array();
-    
-        $dept = $r->department;//taking department from request
-        $schemes = $r->scheme;//taking scheme from request
 
         $sch = '';
         if ($schemes == 'CBSGS'){
@@ -83,7 +103,8 @@ class seatno extends Controller
                                             'sem6' => $sem6,
                                             'sem7' => $sem7,
                                             'sem8' => $sem8,
-                                            'names' => $name
+                                            'names' => $name,
+                                            'sem8namesarray' => $sem8namesarray
                                         ]);
     }
 }

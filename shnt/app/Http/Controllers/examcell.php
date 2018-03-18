@@ -67,6 +67,100 @@ class examcell extends Controller
         return view('examcell.forms.syllabus')->with(compact('user'));
     }
 
+    public function getsyllabus($id) {
+        return  json_encode(\DB::table('examinations')->where('examinations.id', $id)->leftJoin('courses', 'examinations.id', '=', 'courses.examination_id')->get());
+    }
+
+    public function addsyllabus(Request $r) {
+        $examination = new \App\Examination();
+
+        $examination->scheme = $r->input('scheme');
+        $examination->department = $r->input('department');
+        $examination->semester = $r->input('semester');
+        $examination->wef = $r->input('wef');
+        $examination->save();
+
+        $examination_id = $examination->id;
+
+        for($i = 0; $i < count($r->input('code')); $i++) {
+            $courses = new \App\Course();
+            $courses->code = $r->input('code')[$i];
+            $courses->short = $r->input('short')[$i];
+            $courses->title = $r->input('title')[$i];
+            $courses->department = $r->input('department');
+            $courses->semester = $r->input('semester');
+            $courses->ia1 = $r->input('ia1')[$i];
+            $courses->ia2 = $r->input('ia2')[$i];
+            $courses->tw = $r->input('tw')[$i];
+            $courses->oral = $r->input('oral')[$i];
+            $courses->pror = $r->input('pror')[$i];
+            $courses->c_th = $r->input('c_th')[$i];
+            $courses->c_pt = $r->input('c_pt')[$i];
+            $courses->c_tut = $r->input('c_tut')[$i];
+
+            $courses->examination_id = $examination_id;
+            $courses->save();
+        }
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Syllabus successfully added';
+        $return['syllabus'] = \App\Examination::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
+
+    public function updatesyllabus(Request $r) {
+        $examination = \App\Examination::find($r->input('id'));
+
+        $examination->scheme = $r->input('scheme');
+        $examination->department = $r->input('department');
+        $examination->semester = $r->input('semester');
+        $examination->wef = $r->input('wef');
+        $examination->save();
+
+        \App\Course::where('examination_id', $r->input('id'))->update(['examination_id' => null]);
+
+        for($i = 0; $i < count($r->input('course_id')); $i++) {
+            $courses = \App\Course::find($r->input('course_id')[$i]);
+            $courses->code = $r->input('code')[$i];
+            $courses->short = $r->input('short')[$i];
+            $courses->title = $r->input('title')[$i];
+            $courses->department = $r->input('department');
+            $courses->semester = $r->input('semester');
+            $courses->ia1 = $r->input('ia1')[$i];
+            $courses->ia2 = $r->input('ia2')[$i];
+            $courses->tw = $r->input('tw')[$i];
+            $courses->oral = $r->input('oral')[$i];
+            $courses->pror = $r->input('pror')[$i];
+            $courses->c_th = $r->input('c_th')[$i];
+            $courses->c_pt = $r->input('c_pt')[$i];
+            $courses->c_tut = $r->input('c_tut')[$i];
+
+            $courses->examination_id = $r->input('id');
+            $courses->save();
+        }
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Syllabus successfully updated';
+        $return['syllabus'] = \App\Examination::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
+
+    public function deletesyllabus(Request $r) {
+        $examination = \App\Examination::find($r->input('id'));
+        $examination->delete();
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Syllabus successfully deleted';
+        $return['syllabus'] = \App\Examination::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
+
     public function getexaminationform() {
         if(!session()->has('logintoken'))
             return redirect()->route('login');

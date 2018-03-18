@@ -17,11 +17,11 @@
 <div class="row">
     <div class="col s12 m12 l12">
         <div class="card-panel">
-            <div id="table-datatables">
+            <div>
                 <h4 class="header">SYLLABUS</h4>
                 <div class="row">
                     <div class="col s12">
-                        <table id="data-table-simple" class="datatable display" cellspacing="0">
+                        <table class="datatable display" cellspacing="0">
                             <thead>
                                 <tr>
                                     <td>SCHEME NAME</td>
@@ -42,10 +42,10 @@
                                         {{csrf_field()}}
                                         {{method_field('delete')}}
                                         <input type="hidden" name="id" value="{{$e->id}}">
-                                        <button type="button" onclick="editScheme(this)" class="btn-floating waves-effect waves-light editbtn">
+                                        <button type="button" onclick="editSyllabus(this)" class="btn-floating waves-effect waves-light editbtn">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button type="button" onclick="deleteScheme(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                        <button type="button" onclick="deleteSyllabus(this)" class="btn-floating waves-effect red waves-light deletebtn">
                                             <i class="material-icons">delete</i>
                                         </button>
                                     </form>
@@ -60,7 +60,7 @@
     </div>
 </div>
 <div class="fixed-action-btn">
-<a id="schemeadd" class="btn-floating btn-large btn modal-trigger" href="#syllabusmodal">
+<a id="syllabusadd" class="btn-floating btn-large btn modal-trigger" href="#syllabusmodal">
     <i class="material-icons">add</i>
 </a>
 </div>
@@ -69,9 +69,10 @@
     <div class="modal-content">
         <h4 class="header">SYLLABUS</h4>
         <form action="" method="post" id="syllabusform" onsubmit="syllabusSubmit(this, event)">
+        {{csrf_field()}}
         <div class="row">
             <div class="input-field col s6">
-                <select>
+                <select name="scheme">
                 <option value="" disabled selected>Choose Scheme</option>
                 @foreach($schemes = \App\Scheme::all() as $s)
                     <option value="{{$s->scheme}}">{{$s->scheme}}</option>
@@ -131,21 +132,10 @@
                         <input id="idtw" type="number" name="tw[]">
                         <label for="idtw">TERMWORK</label>
                     </div>
-<<<<<<< HEAD
-                    <div class="input-field col s4">
-                    <select name="prorselect" id="prorselect">
-                    <option value="" disabled selected></option>
-                    <option value="1">ORAL</option>
-                    <option value="2">PRACTICAL ORAL</option>
-                    </select>
-                    <label>ORAL OR PRACTICAL/ORAL</label>
-                    </div>
-                    <div class="input-field col s4" id="prordiv">
-=======
-                </div>
+
                 <div class="row">
                     <div class="input-field col s6" id="prordiv">
->>>>>>> fd7a7df91d2eb2e2fa4a35112edabbfd3adc2641
+
                         <input type="number" name="pror[]" id="pror">
                         <label for="oral">PRACTICAL/ORAL MARKS</label>
                     </div>
@@ -168,21 +158,15 @@
                         <label for="c_tut">TUTORIAL CREDITS</label>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div class="row">
-                    <div class="input-field col s6" id="prordiv">
-                        <button type="button" class="btn">CLICK TO VERIFY</button>
-                    </div>
-                </div>
-=======
+
                 </fieldset>
->>>>>>> fd7a7df91d2eb2e2fa4a35112edabbfd3adc2641
+
             </div>
         </div>
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" onclick="addSubjectPanel()" class="modal-action waves-effect waves-green btn">Add Subject</button>
+        <button type="button" onclick="addSubjectPanel()" class="waves-effect waves-green btn">Add Subject</button>
         <span> </span>
         <button form="syllabusform" class="modal-action waves-effect waves-green btn">Add Syllabus</button>
     </div>
@@ -191,21 +175,116 @@
 
 @section('js')
 @parent
-<script type="text/javascript" src="/assets/vendors/jquery-3.2.1.min.js"></script>
-<!--materialize js-->
-<script type="text/javascript" src="/assets/js/materialize.min.js"></script>
-<!--scrollbar-->
-<script type="text/javascript" src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-<script type="text/javascript" src="/assets/js/plugins.js"></script>
-<!--custom-script.js - Add your own theme custom JS-->
-<script type="text/javascript" src="/assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="/assets/js/custom-script.js"></script>
-<!--data-tables.js - Page Specific JS codes -->
-<!-- <script type="text/javascript" src="/assets/js/scripts/data-tables.js"></script> -->
-<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-<script type="text/javascript" src="/assets/js/plugins.js"></script>
+
 <script>
+    function editSyllabus(el) {
+        var form = $(el).closest('form');
+
+        $('#syllabusform').prepend('{{method_field("patch")}}');
+        
+        var id = $(form).find('[name=id]').val();
+
+        // getting data
+        $.get(
+            '/getsyllabus/'+id,
+            function(data) {
+                data = JSON.parse(data);
+                
+                $('#syllabusform').prepend('<input type="hidden" name="id" value="'+data[0].examination_id+'">');
+                $('#syllabusform').find('[name=scheme] option[value='+data[0].scheme+']').attr('selected', 'selected');
+                $('#syllabusform').find('[name=department] option[value='+data[0].department+']').attr('selected', 'selected');
+                updateSemester($('#syllabusform').find('[name=department]'));
+                $('#syllabusform').find('[name=semester] option[value='+data[0].semester+']').attr('selected', 'selected');
+                $('#syllabusform').find('[name=wef]').val(data[0].wef);
+
+                $('#syllabusform .subject-card:last-child fieldset').prepend('<input type="hidden" name="course_id[]" value="'+data[0].id+'">');
+                $('#syllabusform .subject-card:last-child [name="code[]"]').val(data[0].code);
+                $('#syllabusform .subject-card:last-child [name="short[]"]').val(data[0].short);
+                $('#syllabusform .subject-card:last-child [name="title[]"]').val(data[0].title);
+                $('#syllabusform .subject-card:last-child [name="ia1[]"]').val(data[0].ia1);
+                $('#syllabusform .subject-card:last-child [name="ia2[]"]').val(data[0].ia2);
+                $('#syllabusform .subject-card:last-child [name="tw[]"]').val(data[0].tw);
+                $('#syllabusform .subject-card:last-child [name="pror[]"]').val(data[0].pror);
+                $('#syllabusform .subject-card:last-child [name="oral[]"]').val(data[0].oral);
+                $('#syllabusform .subject-card:last-child [name="c_th[]"]').val(data[0].c_th);
+                $('#syllabusform .subject-card:last-child [name="c_pt[]"]').val(data[0].c_pt);
+                $('#syllabusform .subject-card:last-child [name="c_tut[]"]').val(data[0].c_tut);
+
+                for(var i = 1; i < data.length; i++) {
+                    $('#syllabusform #subjectarea').append($('#syllabusform .subject-card:last-child')[0].outerHTML);
+                    
+                    $('#syllabusform .subject-card:last-child [name="course_id[]"]').val(data[i].id);
+                    $('#syllabusform .subject-card:last-child [name="code[]"]').val(data[i].code);
+                    $('#syllabusform .subject-card:last-child [name="short[]"]').val(data[i].short);
+                    $('#syllabusform .subject-card:last-child [name="title[]"]').val(data[i].title);
+                    $('#syllabusform .subject-card:last-child [name="ia1[]"]').val(data[i].ia1);
+                    $('#syllabusform .subject-card:last-child [name="ia2[]"]').val(data[i].ia2);
+                    $('#syllabusform .subject-card:last-child [name="tw[]"]').val(data[i].tw);
+                    $('#syllabusform .subject-card:last-child [name="pror[]"]').val(data[i].pror);
+                    $('#syllabusform .subject-card:last-child [name="oral[]"]').val(data[i].oral);
+                    $('#syllabusform .subject-card:last-child [name="c_th[]"]').val(data[i].c_th);
+                    $('#syllabusform .subject-card:last-child [name="c_pt[]"]').val(data[i].c_pt);
+                    $('#syllabusform .subject-card:last-child [name="c_tut[]"]').val(data[i].c_tut);
+                }
+
+                $('select').material_select();
+                Materialize.updateTextFields();
+            }
+        );
+        
+        $('#syllabusmodal').find('h4').html('Update Syllabus');
+        $('#syllabusmodal').find('button.modal-action').html('Update Syllabus');
+        
+        $('#syllabusmodal').modal('open');
+        Materialize.updateTextFields();
+    }
+
+        function deleteSyllabus(el) {
+        var form = $(el).closest('form');
+        $.post(
+                '{{action("examcell@deletesyllabus")}}',
+                $(form).serialize(),
+                function(data) {
+                    data = JSON.parse(data);
+                    $('meta[name="csrf-token"]').attr('content', data._token);
+                    swal({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type
+                    }, function() {
+                        $(form).done();
+                        $('.datatable').DataTable().destroy();
+                        $('table.datatable tbody').empty();
+                        for(var i = 0; i < data.syllabus.length; i++) {
+                            $('table.datatable tbody').append(`
+                                <tr>
+                                    <td>${data.syllabus[i].scheme}</td>
+                                    <td>${data.syllabus[i].department}</td>
+                                    <td>${data.syllabus[i].semester}</td>
+                                    <td>${data.syllabus[i].wef}</td>
+                                    <td>
+                                        <form action="" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('delete')}}
+                                            <input type="hidden" name="id" value="${data.syllabus[i].id}">
+                                            <button type="button" onclick="editSyllabus(this)" class="btn-floating waves-effect waves-light editbtn">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" onclick="deleteSyllabus(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            `);
+                        }
+                        
+                        var datatable = $('.datatable').DataTable();
+                    });
+                }
+            );
+    }
+
     function removeSubjectPanel(el) {
         if($('.subject-card').length == 1) return;
 
@@ -224,10 +303,8 @@
         console.log($(el).serialize());
     }
 
-    $(document).ready(function(){
-        
-        $('select[name=department]').on('change',function() {
-            var dept= $(this);
+    function updateSemester(el) {
+        var dept= $(el);
             var sem = $('select[name=semester]');
             $(dept).find('option').each(function(){
                 if($(this).attr('value') == $(dept).val()) {
@@ -239,23 +316,95 @@
                 }
             });
             $('select').material_select();
-        });
-    });
-
-    // FORM REPEATER JavaScript
+    }
 
     $(document).ready(function(){
+        
+        $('.modal').modal({
+            complete: function() {
+                $('#syllabusform')[0].reset();
+                $('#syllabusform [name=id]').remove();
+                $('#syllabusform [name="course_id[]"]').remove();
+                $('#syllabusform [name=_method]').remove();
+                while($('#syllabusform #subjectarea').children('.subject-card').length != 1)
+                    $('#syllabusform #subjectarea .subject-card:last-child')[0].remove();
 
-    }); 
+                $('#syllabusform option[selected]').removeAttr('selected');
+                $('#syllabusform option[disabled]').attr('selected', 'selected');
+                $('select').material_select();
+                Materialize.updateTextFields();
+            }
+        });
 
-    // FORM REPEATER JavaScript Ends
+        $('select[name=department]').on('change', function() {
+            updateSemester(this);
+        });
+
+        $('#syllabusform').validate({
+            rules: {
+                scheme: 'required',
+                department: 'required',
+                semester: 'required',
+                wef: 'required',
+                "code[]": 'required',
+                "short[]": 'required',
+                "title[]": 'required'
+            }
+        });
+
+        $('#syllabusform').on('submit', function(e) {
+            if(!$(this).valid()) return;
+
+            e.preventDefault();
+            var form = $(this);
+            var formdata = $(form).serialize();
+            $(form).loading();
+
+            $.post(
+                $(form).attr('action'),
+                formdata,
+                function(data) {
+                    data = JSON.parse(data);
+                    $('meta[name="csrf-token"]').attr('content', data._token);
+                    swal({
+                    title: data.title,
+                    text: data.message,
+                    type: data.type
+                    }, function() {
+                        $(form).done();
+                        $('#syllabusmodal').modal('close');
+                        Materialize.updateTextFields();
+                        $('.datatable').DataTable().destroy();
+                        $('table.datatable tbody').empty();
+                        for(var i = 0; i < data.syllabus.length; i++) {
+                            $('table.datatable tbody').append(`
+                                <tr>
+                                    <td>${data.syllabus[i].scheme}</td>
+                                    <td>${data.syllabus[i].department}</td>
+                                    <td>${data.syllabus[i].semester}</td>
+                                    <td>${data.syllabus[i].wef}</td>
+                                    <td>
+                                        <form action="" method="post">
+                                            {{csrf_field()}}
+                                            {{method_field('delete')}}
+                                            <input type="hidden" name="id" value="${data.syllabus[i].id}">
+                                            <button type="button" onclick="editSyllabus(this)" class="btn-floating waves-effect waves-light editbtn">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" onclick="deleteSyllabus(this)" class="btn-floating waves-effect red waves-light deletebtn">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            `);
+                        }
+                        
+                        var datatable = $('.datatable').DataTable();
+                    });
+                }
+            );
+        });
+    });
 </script>
-@endsection
-
-
-@section('css')
-@parent
-<style>
-    #subjectarea .subject-card:first-child .close-btn { display: none; }
-</style>
 @endsection

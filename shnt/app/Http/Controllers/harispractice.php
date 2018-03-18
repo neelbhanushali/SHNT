@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class harispractice extends Controller
 {
     public function demo(){
-        $h = "1001";
-        $h .= 'haris';
-        echo $h;
+        // $h = "1001";
+        // $h .= 'haris';
+        // echo $h;
 
         // $no = '1001';
         // for ($j=0; $j < 8; $j++) {
@@ -71,10 +71,46 @@ class harispractice extends Controller
         //     echo $token,"&nbsp&nbsp&nbsp&nbsp",$names[$i],"&nbsp&nbsp&nbsp&nbsp",$sem3[$i],"<br>";
         // }
         
-        $q = \DB::table('examinations')
-            ->join('courses','examinations.id', '=', 'courses.examination_id')
-            ->select('examinations.*', 'courses.*')
-            ->get();
-            dd($q);
+        // $q = \DB::table('examinations')
+        //     ->join('courses','examinations.id', '=', 'courses.examination_id')
+        //     ->select('examinations.scheme', 'courses.semester')
+        //     ->get();
+        //     var_dump($q);
+
+        // $q = \App\Course::select('examination_id')->where('short','MP')->get();
+        
+        // echo \App\Examination::select('department')->where('id',$q[0]->examination_id)->get();
+
+
+        // $dept = "CO";//taking department from request
+        // $schemes = "CBSGS";//taking scheme from request
+
+        // $sem8temp = \App\AllottedClass::select('room')->where('name', 'BE'.$dept)->get();
+        // $sem8names = \App\Student::select('firstname')->where(['department' => $dept, 'class' => $sem8temp[0]->room])->get();
+        // // $alreadyDone = Seatno::select('flag')->where('department' => $r->department);
+        // // DB::table('examinations')
+        // //     ->join('courses','examinations.id', '=', 'courses.examination_id')
+        // //     ->select('examinations.scheme', 'courses.short')
+        // //     ->get();
+        // $sem8namesarray = array();
+        // $i = 0;
+        // foreach ($sem8names as $semt){
+        //     $sem8namesarray[$i++] = $semt->firstname;
+        // }
+        // print_r($sem8namesarray);
+
+        $sem8names = \DB::table('students')
+                    ->join('allotted_classes', 'students.class', '=', 'allotted_classes.room')
+                    ->join('exam_forms','students.rollnumber','=','exam_forms.rollnumber')
+                    ->select(['lastname','firstname','middlename','mothername'])
+                    ->where(['students.department' => 'CO','allotted_classes.name' => 'BECO'])
+                    ->orderBy('kt')
+                    ->orderBy('lastname')
+                    ->orderBy('firstname')
+                    ->orderBy('middlename')
+                    ->orderBy('mothername')
+                    ->get();
+        dd($sem8names);
+
     }
 }
