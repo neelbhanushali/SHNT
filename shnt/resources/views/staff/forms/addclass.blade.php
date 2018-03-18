@@ -31,7 +31,7 @@
         <div class="card-panel">
             <h4 class="header">ADDING CLASSES</h4>
             <div class="row">
-                <form method="" action="">
+                <form method="" action="" id="classform">
                     <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
                     <div class="input-field col s4">
                         <select name="floor" id="floor">
@@ -44,9 +44,18 @@
 
                     <div class="input-field col s4">
                         <select name="roomno" id="roomno1">
-                        <option value="null" disabled selected>Select Room Number</option>
+                            <option value="null" disabled selected>Select Room Number</option>
                         </select>
                     </div>
+
+                    <div class="input-field col s4">
+                        <select name="classname" id="idclassname">
+                        @foreach($years = \App\Year::all() as $year)
+                            <option value="{{$year->id}}">{{$year->name}}</option>
+                        @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn waves-effect waves-light" id="submitallottment">ALLOTT CLASSROOM</button>
                 </form>
             </div>
         </div>
@@ -73,7 +82,18 @@
                         </thead>
                         <tbody>
                         @foreach($allottedclasses = \App\AllottedClass::where('dept', $user->department)->get() as $allottedclass)
-                            <td>{{$allottedclass->name}}</td>
+                            @if($allottedclass->classname == 1)
+                                <td>FE</td>
+                            @endif
+                            @if($allottedclass->classname == 2)
+                                <td>SE</td>
+                            @endif
+                            @if($allottedclass->classname == 3)
+                                <td>TE</td>
+                            @endif
+                            @if($allottedclass->classname == 4)
+                                <td>BE</td>
+                            @endif
                             <td>{{$allottedclass->room}}</td>
                             <td><button type="button" class="btn waves-effect waves-light clicker" id="{{$allottedclass->room}}">MORE INFO</button></td>
                         @endforeach
@@ -140,6 +160,38 @@
                 }
             });
         });
+    });
+
+    $(document).ready(function(){
+        $("#classform").submit(function(event){
+            var classformdata = $(this).serializeArray();
+            // var jsonarr = JSON.stringify(classformdata);
+            // var obj = $.parseJSON(jsonarr);
+            // var meta = {
+            //     '_token':"{{csrf_token()}}",
+            //     'department':"{{$user->department}}"
+            // }
+            // $.extend(true,obj,meta);
+            classformdata.push({
+                'name':'_token',
+                'value':"{{csrf_token()}}"
+                });
+            classformdata.push({
+                'name':'department',
+                'value':"{{$user->department}}" 
+            });
+            console.log(classformdata);
+
+            $.ajax({
+                type : "POST",
+                url : "{{route('classisallotted')}}",
+                data : classformdata,
+                success : function(data){
+                    alert(data);
+                }
+            });
+            event.preventDefault();
+        }); 
     });
 
     $(document).ready(function(){

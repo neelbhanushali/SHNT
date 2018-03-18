@@ -54,6 +54,7 @@ return array(
     'App\\Staff' => $baseDir . '/app/Staff.php',
     'App\\Student' => $baseDir . '/app/Student.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\Year' => $baseDir . '/app/Year.php',
     'ArithmeticError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
     'AssertionError' => $vendorDir . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

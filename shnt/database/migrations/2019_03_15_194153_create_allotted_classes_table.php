@@ -15,11 +15,12 @@ class CreateAllottedClassesTable extends Migration
     {
         Schema::create('allotted_classes', function (Blueprint $table) {
             $table->string('room',10);
-            $table->string('name',20);
+            $table->integer('classname')->unsigned();
             $table->string('dept',10); 
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('room')->references('roomnumber')->on('classrooms')->onUpdate('cascade');
+            $table->foreign('classname')->references('id')->on('years')->onUpdate('cascade');  
         });
     }
 

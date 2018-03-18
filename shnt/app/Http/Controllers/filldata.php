@@ -8,6 +8,23 @@ class filldata extends Controller
 {
     public function save(){
 
+
+        
+        // year adding scripts starts
+        $y = new \App\Year();
+        $y->name="FE";
+        $y->save();
+        $y = new \App\Year();
+        $y->name="SE";
+        $y->save();
+        $y = new \App\Year();
+        $y->name="TE";
+        $y->save();
+        $y = new \App\Year();
+        $y->name="BE";
+        $y->save();
+        // year adding scripts ends
+
         // class room record adding
 
         // ME department
@@ -178,7 +195,7 @@ class filldata extends Controller
         // alloted classes record adding
         $al = new \App\AllottedClass();
         $al->room = 406;
-        $al->name = "BECO";
+        $al->classname = "4";
         $al->dept = "CO";
         $al->save();
 
@@ -1193,5 +1210,6 @@ class filldata extends Controller
         $m->tw = 18;
         $m->pror = 22;
         $m->save();
+
     }
 }

@@ -359,6 +359,7 @@ class ComposerStaticInit7717679245840aae6af969c80905bec1
         'App\\Staff' => __DIR__ . '/../..' . '/app/Staff.php',
         'App\\Student' => __DIR__ . '/../..' . '/app/Student.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Year' => __DIR__ . '/../..' . '/app/Year.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',

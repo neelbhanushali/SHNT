@@ -98,6 +98,10 @@ Route::delete('schemes','examcell@deletescheme');
         return response()->json($rooms);
     })->name('kamehamehaa');
 
+// Classes allottment 
+Route::post('/classisallotted',function(){
+    return "success";
+})->name('classisallotted');
 
 Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
 Route::get('getsyllabus/{id}','examcell@getsyllabus');
