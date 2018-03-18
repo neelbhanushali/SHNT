@@ -43,11 +43,62 @@
                     </div>
 
                     <div class="input-field col s4">
-                        <select name="roomno" id="roomno">
+                        <select name="roomno" id="roomno1">
                         <option value="null" disabled selected>Select Room Number</option>
                         </select>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!-- <div class="col s12 m12 l12">
+        <div class="card-panel grey darken-1">
+            <span class="white-text">
+                In this section you can manipulate alloted classes. The form below populates the room numbers  based on the floor selected by you. You can also view already allotted classes by Scrolling further on the page.
+            </span>
+        </div>
+    </div> -->
+    <div class="col s12 m12 l12">
+        <div class="card-panel">
+            <h4 class="header">ALLOTTED CLASSROOMS IN YOUR DEPARTMENT</h4>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <table class="display">
+                        <thead>
+                            <th>NAME</th>
+                            <th>ROOM NUMBER</th>
+                            <th>ACTION</th>                     
+                        </thead>
+                        <tbody>
+                        @foreach($allottedclasses = \App\AllottedClass::where('dept', $user->department)->get() as $allottedclass)
+                            <td>{{$allottedclass->name}}</td>
+                            <td>{{$allottedclass->room}}</td>
+                            <td><button type="button" class="btn waves-effect waves-light clicker" id="{{$allottedclass->room}}">MORE INFO</button></td>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" id="moreinfo">
+    <!-- <div class="col s12 m12 l12">
+        <div class="card-panel grey darken-1">
+            <span class="white-text">
+                In this section you can manipulate alloted classes. The form below populates the room numbers  based on the floor selected by you. You can also view already allotted classes by Scrolling further on the page.
+            </span>
+        </div>
+    </div> -->
+    <div class="col s12 m12 l12">
+        <div class="card-panel">
+            <h4 class="header">ALLOTTED CLASSROOMS IN YOUR DEPARTMENT</h4>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -57,21 +108,6 @@
 
 @section('js')
 @parent
-<script type="text/javascript" src="/assets/vendors/jquery-3.2.1.min.js"></script>
-<!--materialize js-->
-<script type="text/javascript" src="/assets/js/materialize.min.js"></script>
-<!--scrollbar-->
-<script type="text/javascript" src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-<script type="text/javascript" src="/assets/js/plugins.js"></script>
-<!--custom-script.js - Add your own theme custom JS-->
-<script type="text/javascript" src="/assets/js/custom-script.js"></script>
-<!-- DataTables -->
-<script type="text/javascript" src="/assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
-<!--data-tables.js - Page Specific JS codes -->
-<script type="text/javascript" src="/assets/js/scripts/data-tables.js"></script>
-<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-<script type="text/javascript" src="/assets/js/plugins.js"></script>
 <script>
     $('table').dataTable();
     // $.ajaxSetup({
@@ -81,7 +117,7 @@
     // });
     $(document).ready(function(){
         $('#floor').on('change',function(e){
-            console.log(e.target.value);
+            // console.log(e.target.value);
             var id = e.target.value;
             // $.post('/getRoomNo',{roomno:id},function(data){
             //     alert(data);
@@ -89,18 +125,28 @@
 
             $.ajax({
                 type : "POST",
-                url : "/kamehamehaa",
+                url : "{{route('kamehamehaa')}}",
                 data : {
                     "_token" : "{{csrf_token()}}",
                     "id" : id 
                 },
                 success : function(data){
-                    console.log(data);
+                    $("#roomno1").empty();
+                    $.each(data,function(key,value){
+                        console.log(value.roomnumber);
+                        $("#roomno1").append("<option value='"+value.roomnumber+"'>"+value.roomnumber+"</option>");
+                    });
+                    $('select').material_select();                  
                 }
-            })
+            });
         });
     });
 
-
+    $(document).ready(function(){
+        $(document).on('click','.btn',function(){
+            console.log($(this).attr("id"));
+            
+        });
+    });
 </script>
 @endsection

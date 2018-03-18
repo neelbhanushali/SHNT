@@ -95,8 +95,8 @@ Route::delete('schemes','examcell@deletescheme');
         $id = $_POST['id'];
         $rooms = \App\Classrooms::where('floor',$id)->select('roomnumber')->get();
          
-        return $response;
-    });
+        return response()->json($rooms);
+    })->name('kamehamehaa');
 
 
 Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
