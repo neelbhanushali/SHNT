@@ -82,20 +82,22 @@
                         </thead>
                         <tbody>
                         @foreach($allottedclasses = \App\AllottedClass::where('dept', $user->department)->get() as $allottedclass)
-                            @if($allottedclass->classname == 1)
-                                <td>FE</td>
-                            @endif
-                            @if($allottedclass->classname == 2)
-                                <td>SE</td>
-                            @endif
-                            @if($allottedclass->classname == 3)
-                                <td>TE</td>
-                            @endif
-                            @if($allottedclass->classname == 4)
-                                <td>BE</td>
-                            @endif
-                            <td>{{$allottedclass->room}}</td>
-                            <td><button type="button" class="btn waves-effect waves-light clicker" id="{{$allottedclass->room}}">MORE INFO</button></td>
+                            <tr>
+                                @if($allottedclass->classname == 1)
+                                    <td>FE</td>
+                                @endif
+                                @if($allottedclass->classname == 2)
+                                    <td>SE</td>
+                                @endif
+                                @if($allottedclass->classname == 3)
+                                    <td>TE</td>
+                                @endif
+                                @if($allottedclass->classname == 4)
+                                    <td>BE</td>
+                                @endif
+                                <td>{{$allottedclass->room}}</td>
+                                <td><button type="button" class="btn waves-effect waves-light clicker" id="{{$allottedclass->room}}">MORE INFO</button></td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -188,6 +190,7 @@
                 data : classformdata,
                 success : function(data){
                     alert(data);
+                    $('table').dataTable();
                 }
             });
             event.preventDefault();

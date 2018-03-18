@@ -100,6 +100,13 @@ Route::delete('schemes','examcell@deletescheme');
 
 // Classes allottment 
 Route::post('/classisallotted',function(){
+    $ac = new \App\AllottedClass();
+    $room = $_POST['roomno'];
+    $ac->room = intval($room);
+    $intclass = $_POST['classname'];
+    $ac->classname = intval($intclass);
+    $ac->dept=$_POST['department'];
+    $ac->save();
     return "success";
 })->name('classisallotted');
 
