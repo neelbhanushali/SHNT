@@ -69,6 +69,7 @@
     <div class="modal-content">
         <h4 class="header">SYLLABUS</h4>
         <form action="" method="post" id="syllabusform" onsubmit="syllabusSubmit(this, event)">
+        {{csrf_field()}}
         <div class="row">
             <div class="input-field col s6">
                 <select name="scheme">
@@ -178,8 +179,8 @@
 <script>
     function editSyllabus(el) {
         var form = $(el).closest('form');
-        
-        $(form).find('input[name=_method]').val('patch');
+
+        $('#syllabusform').prepend('{{method_field("patch")}}');
         
         var id = $(form).find('[name=id]').val();
 
@@ -189,12 +190,14 @@
             function(data) {
                 data = JSON.parse(data);
                 
+                $('#syllabusform').prepend('<input type="hidden" name="id" value="'+data[0].examination_id+'">');
                 $('#syllabusform').find('[name=scheme] option[value='+data[0].scheme+']').attr('selected', 'selected');
                 $('#syllabusform').find('[name=department] option[value='+data[0].department+']').attr('selected', 'selected');
                 updateSemester($('#syllabusform').find('[name=department]'));
                 $('#syllabusform').find('[name=semester] option[value='+data[0].semester+']').attr('selected', 'selected');
                 $('#syllabusform').find('[name=wef]').val(data[0].wef);
 
+                $('#syllabusform .subject-card:last-child fieldset').prepend('<input type="hidden" name="course_id[]" value="'+data[0].id+'">');
                 $('#syllabusform .subject-card:last-child [name="code[]"]').val(data[0].code);
                 $('#syllabusform .subject-card:last-child [name="short[]"]').val(data[0].short);
                 $('#syllabusform .subject-card:last-child [name="title[]"]').val(data[0].title);
@@ -209,7 +212,8 @@
 
                 for(var i = 1; i < data.length; i++) {
                     $('#syllabusform #subjectarea').append($('#syllabusform .subject-card:last-child')[0].outerHTML);
-
+                    
+                    $('#syllabusform .subject-card:last-child [name="course_id[]"]').val(data[i].id);
                     $('#syllabusform .subject-card:last-child [name="code[]"]').val(data[i].code);
                     $('#syllabusform .subject-card:last-child [name="short[]"]').val(data[i].short);
                     $('#syllabusform .subject-card:last-child [name="title[]"]').val(data[i].title);
@@ -319,6 +323,9 @@
         $('.modal').modal({
             complete: function() {
                 $('#syllabusform')[0].reset();
+                $('#syllabusform [name=id]').remove();
+                $('#syllabusform [name="course_id[]"]').remove();
+                $('#syllabusform [name=_method]').remove();
                 while($('#syllabusform #subjectarea').children('.subject-card').length != 1)
                     $('#syllabusform #subjectarea .subject-card:last-child')[0].remove();
 
