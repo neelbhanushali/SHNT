@@ -26,6 +26,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ajax' => $baseDir . '/app/Http/Controllers/ajax.php',
     'App\\Http\\Controllers\\examcell' => $baseDir . '/app/Http/Controllers/examcell.php',
+    'App\\Http\\Controllers\\filldata' => $baseDir . '/app/Http/Controllers/filldata.php',
     'App\\Http\\Controllers\\harispractice' => $baseDir . '/app/Http/Controllers/harispractice.php',
     'App\\Http\\Controllers\\scheme' => $baseDir . '/app/Http/Controllers/scheme.php',
     'App\\Http\\Controllers\\seatno' => $baseDir . '/app/Http/Controllers/seatno.php',
