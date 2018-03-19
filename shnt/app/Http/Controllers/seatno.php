@@ -19,7 +19,7 @@ class seatno extends Controller
                     ->join('allotted_classes', 'students.class', '=', 'allotted_classes.room')
                     ->join('exam_forms','students.rollnumber','=','exam_forms.rollnumber')
                     ->select(['lastname','firstname','middlename','mothername'])
-                    ->where(['students.department' => $dept,'allotted_classes.name' => 'BE'.$dept])
+                    ->where(['students.department' => $dept,'allotted_classes.classname' => 'BE'.$dept])
                     ->orderBy('kt')
                     ->orderBy('lastname')
                     ->orderBy('firstname')
