@@ -30,7 +30,7 @@ class CreateCoursesTable extends Migration
             $table->string('c_pt', 3)->nullable();
             $table->string('c_tut', 3)->nullable();
             $table->timestamps();
-            $table->bigInteger('examination_id')->unsigned()->nullable();
+            $table->bigInteger('examination_id')->unsigned();
             $table->foreign('examination_id')->references('id')->on('examinations')->onDelete('cascade')->onUpdate('cascade');
         });
     }

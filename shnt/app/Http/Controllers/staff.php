@@ -67,4 +67,12 @@ class staff extends Controller
         
     //     return redirect()->route('staff.forms.addmarks');
     // }
+
+    public function addinternalmarks($course_id) {
+        $user = \App\Staff::find(session()->get('username'));
+        $course = \App\Course::find($course_id);
+        $students = \DB::table('scores')->where('scores.course_id', $course->id)->join('exam_forms', 'scores.exam_form_id', '=', 'exam_forms.id')->get();
+        // return dd(compact('user', 'course', 'students'));
+        return view('staff.forms.addinternalmarks')->with(compact('user', 'course', 'students'));
+    }
 }

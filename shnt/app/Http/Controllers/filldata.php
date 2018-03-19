@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class filldata extends Controller
 {
+    
+
     public function save(){
 
 
@@ -1513,16 +1515,47 @@ class filldata extends Controller
         $ef->year = 2016;
         $ef->save();
 
+        // csr relation
+        $csr = new \App\CSR();
+        $csr->teacher = "tabrezkhan";
+        $csr->course_id = 13;
+        $csr->th = 1;
+        $csr->pt = 1;
+        $csr->save();
+
+        $csr = new \App\CSR();
+        $csr->teacher = "tabrezkhan";
+        $csr->course_id = 17;
+        $csr->pt = 1;
+        $csr->save();
+
         // marks adding
-        $m = new \App\Scores();
-        $m->exam_form_id = 1;
-        $m->course_id = 1;
-        $m->ia1 = 10;
-        $m->ia2 = 10;
-        $m->ese = 24;
-        $m->tw = 18;
-        $m->pror = 22;
-        $m->save();
+        
+
+        // \App\ExamForm::exam_form_filling(1);
+        // \App\ExamForm::exam_form_filling(3);
+
+        // $m = new \App\Scores();
+        // $m->exam_form_id = 1;
+        // $m->course_id = 1;
+        // $m->ia1 = 10;
+        // $m->ia2 = 10;
+        // $m->ese = 24;
+        // $m->tw = 18;
+        // $m->pror = 22;
+        // $m->save();
+
+        // $m = new \App\Scores();
+        // $m->exam_form_id = 3;
+        // $m->course_id = 1;
+        // $m->ia1 = 10;
+        // $m->ia2 = 10;
+        // $m->ese = 24;
+        // $m->tw = 18;
+        // $m->pror = 22;
+        // $m->save();
 
     }
+
+    
 }
