@@ -28,13 +28,13 @@ class filldata extends Controller
         // class room record adding
 
         // ME department
-        $al = new \App\Classrooms();
-        $al->roomnumber = 103;
-        $al->floor = 0;
-        $al->dept = "ME";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 103;
+        // $al->floor = 0;
+        // $al->dept = "ME";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
         $al = new \App\Classrooms();
         $al->roomnumber = 104;
@@ -1093,7 +1093,7 @@ class filldata extends Controller
         $c->pror = "25";
         $c->c_th = "4";
         $c->c_pt = "1";
-        $c->examination_id = 1;
+        $c->examination_id = 3;
         $c->save();
 
 
@@ -1110,7 +1110,7 @@ class filldata extends Controller
         $c->pror = "25";
         $c->c_th = "4";
         $c->c_pt = "1";
-        $c->examination_id = 1;
+        $c->examination_id = 3;
         $c->save();
 
         $c = new \App\Course();
@@ -1126,7 +1126,7 @@ class filldata extends Controller
         $c->pror = "25";
         $c->c_th = "4";
         $c->c_pt = "1";
-        $c->examination_id = 1;
+        $c->examination_id = 3;
         $c->save();
 
 
@@ -1143,7 +1143,7 @@ class filldata extends Controller
         $c->pror = "25";
         $c->c_th = "4";
         $c->c_pt = "1";
-        $c->examination_id = 1;
+        $c->examination_id = 3;
         $c->save();
 
 
@@ -1156,7 +1156,7 @@ class filldata extends Controller
         $c->tw = "25";
         $c->pror = "50";
         $c->c_pt = "2";
-        $c->examination_id = 1;
+        $c->examination_id = 3;
         $c->save();
 
 
@@ -1168,7 +1168,7 @@ class filldata extends Controller
         $c->semester = "5";
         $c->tw = "25";
         $c->c_pt = "2";
-        $c->examination_id = 1;
+        $c->examination_id = 3;
         $c->save();
 
         // adding examform
