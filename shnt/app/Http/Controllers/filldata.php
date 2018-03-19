@@ -1486,17 +1486,17 @@ class filldata extends Controller
 
         // adding examform
         $ef = new \App\ExamForm();
-        $ef->examination_id = 1;
+        $ef->examination_id = 3;
         $ef->rollnumber = "13CO19";
-        $ef->seatnumber = "COC5011";
+        $ef->seatnumber = null;
         $ef->month = "december";
-        $ef->kt = 1;
+        $ef->kt = 0;
         $ef->half = 2;
         $ef->year = 2015;
         $ef->save();
 
         $ef = new \App\ExamForm();
-        $ef->examination_id = 1;
+        $ef->examination_id = 3;
         $ef->rollnumber = "15DCO67";
         $ef->seatnumber = "COC5012";
         $ef->month = "december";
@@ -1505,12 +1505,12 @@ class filldata extends Controller
         $ef->save();
 
         $ef = new \App\ExamForm();
-        $ef->examination_id = 1;
+        $ef->examination_id = 3;
         $ef->rollnumber = "14CO28";
-        $ef->seatnumber = "COC5013";
+        $ef->seatnumber = null;
         $ef->month = "december";
         $ef->half = 2;
-        $ef->year = 2015;
+        $ef->year = 2016;
         $ef->save();
 
         // marks adding
