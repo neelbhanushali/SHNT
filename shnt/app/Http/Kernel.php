@@ -61,5 +61,8 @@ class Kernel extends HttpKernel
 
         'loggedin' => \App\Http\Middleware\loggedin::class,
         'notloggedin' => \App\Http\Middleware\notloggedin::class,
+        'student' => \App\Http\Middleware\student::class,
+        'staff' => \App\Http\Middleware\staff::class,
+        'examcell' => \App\Http\Middleware\examcell::class,
     ];
 }
