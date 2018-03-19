@@ -36,168 +36,168 @@ class filldata extends Controller
         // $al->type = "LH";
         // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 104;
-        $al->floor = 0;
-        $al->dept = "ME";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 104;
+        // $al->floor = 0;
+        // $al->dept = "ME";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 105;
-        $al->floor = 0;
-        $al->dept = "ME";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 105;
+        // $al->floor = 0;
+        // $al->dept = "ME";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 106;
-        $al->floor = 0;
-        $al->dept = "ME";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 106;
+        // $al->floor = 0;
+        // $al->dept = "ME";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        // CE department
-        $al = new \App\Classrooms();
-        $al->roomnumber = 203;
-        $al->floor = 1;
-        $al->dept = "CE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // // CE department
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 203;
+        // $al->floor = 1;
+        // $al->dept = "CE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 204;
-        $al->floor = 1;
-        $al->dept = "CE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 204;
+        // $al->floor = 1;
+        // $al->dept = "CE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 205;
-        $al->floor = 1;
-        $al->dept = "CE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 205;
+        // $al->floor = 1;
+        // $al->dept = "CE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 206;
-        $al->floor = 1;
-        $al->dept = "CE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 206;
+        // $al->floor = 1;
+        // $al->dept = "CE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        // EE department
-        $al = new \App\Classrooms();
-        $al->roomnumber = 303;
-        $al->floor = 2;
-        $al->dept = "EE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // // EE department
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 303;
+        // $al->floor = 2;
+        // $al->dept = "EE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 304;
-        $al->floor = 2;
-        $al->dept = "EE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 304;
+        // $al->floor = 2;
+        // $al->dept = "EE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 305;
-        $al->floor = 2;
-        $al->dept = "EE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 305;
+        // $al->floor = 2;
+        // $al->dept = "EE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 306;
-        $al->floor = 2;
-        $al->dept = "EE";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 306;
+        // $al->floor = 2;
+        // $al->dept = "EE";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        // ET department
-        $al = new \App\Classrooms();
-        $al->roomnumber = 301;
-        $al->floor = 2;
-        $al->dept = "ET";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // // ET department
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 301;
+        // $al->floor = 2;
+        // $al->dept = "ET";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 302;
-        $al->floor = 2;
-        $al->dept = "ET";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 302;
+        // $al->floor = 2;
+        // $al->dept = "ET";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 307;
-        $al->floor = 2;
-        $al->dept = "ET";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 307;
+        // $al->floor = 2;
+        // $al->dept = "ET";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 308;
-        $al->floor = 2;
-        $al->dept = "ET";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 308;
+        // $al->floor = 2;
+        // $al->dept = "ET";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        // CO department
-        $al = new \App\Classrooms();
-        $al->roomnumber = 403;
-        $al->floor = 3;
-        $al->dept = "CO";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // // CO department
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 403;
+        // $al->floor = 3;
+        // $al->dept = "CO";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 404;
-        $al->floor = 3;
-        $al->dept = "CO";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 404;
+        // $al->floor = 3;
+        // $al->dept = "CO";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 405;
-        $al->floor = 3;
-        $al->dept = "CO";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 405;
+        // $al->floor = 3;
+        // $al->dept = "CO";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        $al = new \App\Classrooms();
-        $al->roomnumber = 406;
-        $al->floor = 3;
-        $al->dept = "CO";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 406;
+        // $al->floor = 3;
+        // $al->dept = "CO";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
-        // alloted classes record adding
-        $al = new \App\AllottedClass();
-        $al->room = 406;
-        $al->classname = "4";
-        $al->dept = "CO";
-        $al->save();
+        // // alloted classes record adding
+        // $al = new \App\AllottedClass();
+        // $al->room = 406;
+        // $al->classname = "4";
+        // $al->dept = "CO";
+        // $al->save();
 
         // STUDENT ADDING SCRIPTS
 
@@ -1079,6 +1079,218 @@ class filldata extends Controller
         // $examinations->wef = "2012";
         // $examinations->save();
         // EXTC EXAMINATION ENDS
+        
+        
+        // adding courses of 3rd sem
+        $c = new \App\Course();
+        $c->title = "Applied Mathematics III";
+        $c->short = "AM3";
+        $c->code = "CSC301";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = null;
+        $c->c_th = "4";
+        $c->c_pt = null;
+        $c->c_tut = "1";
+        $c->examination_id = 1;
+        $c->save();
+
+
+        $c = new \App\Course();
+        $c->title = "Object Oriented Programming Methodolgy";
+        $c->short = "OOPM";
+        $c->code = "CSC302";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 1;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Data Structures";
+        $c->short = "DS";
+        $c->code = "CSC303";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 1;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Digital Logic Design and Analysis";
+        $c->short = "DLDA";
+        $c->code = "CSC304";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = null;
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 1;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Discrete Structures";
+        $c->short = "DIS";
+        $c->code = "CSC305";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = null;
+        $c->pror = null;
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 1;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Electronic Circuits and Communication Fundamentals";
+        $c->short = "ECCF";
+        $c->code = "CSC306";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 1;
+        $c->save();
+
+
+        // adding courses of 4th sem
+        $c = new \App\Course();
+        $c->title = "Applied Mathematics IV";
+        $c->short = "AM4";
+        $c->code = "CSC401";
+        $c->department = "CO";
+        $c->semester = "4";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = null;
+        $c->c_th = "4";
+        $c->c_pt = null;
+        $c->c_tut = "1";
+        $c->examination_id = 2;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Analysis of Algorithms";
+        $c->short = "AOA";
+        $c->code = "CSC402";
+        $c->department = "CO";
+        $c->semester = "4";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 2;
+        $c->save();
+
+
+        $c = new \App\Course();
+        $c->title = "Computer Organization and Architecture";
+        $c->short = "COA";
+        $c->code = "CSC403";
+        $c->department = "CO";
+        $c->semester = "4";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 2;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Data Base Management systems";
+        $c->short = "DBMS";
+        $c->code = "CSC404";
+        $c->department = "CO";
+        $c->semester = "4";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 2;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Theoretical Computer Science";
+        $c->short = "TCS";
+        $c->code = "CSC405";
+        $c->department = "CO";
+        $c->semester = "4";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = null;
+        $c->pror = null;
+        $c->c_th = "4";
+        $c->c_pt = null;
+        $c->c_tut = null;
+        $c->examination_id = 2;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Computer Graphics";
+        $c->short = "CG";
+        $c->code = "CSC406";
+        $c->department = "CO";
+        $c->semester = "4";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "3";
+        $c->c_pt = "1";
+        $c->c_tut = null;
+        $c->examination_id = 2;
+        $c->save();
+
+
         // adding courses of 5th sem
         $c = new \App\Course();
         $c->title = "Microprocessor";
@@ -1169,6 +1381,107 @@ class filldata extends Controller
         $c->tw = "25";
         $c->c_pt = "2";
         $c->examination_id = 3;
+        $c->save();
+
+
+        // adding courses of 6th sem
+        $c = new \App\Course();
+        $c->title = "System Programming and Compiler Construction";
+        $c->short = "SPCC";
+        $c->code = "CPC601";
+        $c->department = "CO";
+        $c->semester = "6";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->examination_id = 4;
+        $c->save();
+
+
+        $c = new \App\Course();
+        $c->title = "Software Engineering";
+        $c->short = "SE";
+        $c->code = "CPC602";
+        $c->department = "CO";
+        $c->semester = "6";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->examination_id = 4;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Distributed Databases";
+        $c->short = "DD";
+        $c->code = "CPC603";
+        $c->department = "CO";
+        $c->semester = "6";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->examination_id = 4;
+        $c->save();
+
+
+        $c = new \App\Course();
+        $c->title = "Mobile Communication and Computing";
+        $c->short = "MCC";
+        $c->code = "CPC604";
+        $c->department = "CO";
+        $c->semester = "6";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = "25";
+        $c->c_th = "4";
+        $c->c_pt = "1";
+        $c->examination_id = 4;
+        $c->save();
+
+
+        $c = new \App\Course();
+        $c->title = "Project Management";
+        $c->short = "SPM";
+        $c->code = "CPE6012";
+        $c->department = "CO";
+        $c->semester = "6";
+        $c->ia1 = null;
+        $c->ia2 = null;
+        $c->ese = null;
+        $c->tw = "50";
+        $c->pror = null;
+        $c->c_th = null;
+        $c->c_pt = "2";
+        $c->examination_id = 4;
+        $c->save();
+
+        $c = new \App\Course();
+        $c->title = "Network Programming Laboratory";
+        $c->short = "NPL";
+        $c->code = "CPL601";
+        $c->department = "CO";
+        $c->semester = "6";
+        $c->ia1 = null;
+        $c->ia2 = null;
+        $c->ese = null;
+        $c->tw = "25";
+        $c->pror = "50";
+        $c->c_th = null;
+        $c->c_pt = "2";
+        $c->examination_id = 4;
         $c->save();
 
         // adding examform
