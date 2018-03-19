@@ -41,86 +41,68 @@ Route::middleware('loggedin')->group(function() {
     Route::get('/', 'user@dashboard')->name('dashboard');
 
     Route::get('profile', 'user@profile')->name('profile');
-    
-    /**
-     * Examination form
-     * Add examination
-     * used by examcell
-     */
 
-    Route::get('schemes', 'examcell@schemes')->name('examcell.scheme');
+    Route::middleware('staff')->group(function() {
+        Route::get('addclass','staff@addclass')->name('staff.forms.addclass');
 
-    Route::get('examination', 'examcell@getexaminationform')->name('examcell.forms.examination');
-    Route::post('examination', 'examcell@addexamination');
+        Route::post('/kamehamehaa',function(Request $r){
+            $id = $_POST['id'];
+            $rooms = \App\Classrooms::where('floor',$id)->select('roomnumber')->get();
+             
+            return response()->json($rooms);
+        })->name('kamehamehaa');
 
-    Route::get('course', 'examcell@getcourseform')->name('examcell.forms.courses');
-    Route::post('course', 'examcell@addcourse');
+        Route::post('/classisallotted',function(){
+            $ac = new \App\AllottedClass();
+            $room = $_POST['roomno'];
+            $ac->room = intval($room);
+            $intclass = $_POST['classname'];
+            $ac->classname = intval($intclass);
+            $ac->dept=$_POST['department'];
+            $ac->save();
+            return "success";
+        })->name('classisallotted');
+    });
 
-    Route::get('courses', 'examcell@getexamcourserelationform')->name('examcell.forms.examcourserelation');
-    Route::post('courses', 'examcell@addexamcourserelation');
-    
-    // STUDENT
-    Route::get('examform', 'student@getfillexaminationform')->name('student.forms.examform');
-    Route::post('examform', 'student@fillexaminationform');
-    Route::get('gazette', 'student@viewgazette')->name('student.forms.gazette');
-    
-    
-    // STAFF
-    // Route::get('addmarks', 'staff@getaddmarksform')->name('staff.forms.addmarks');
-    // Route::post('addmarks', 'staff@addmarks');
-    // Route::get('class', 'staff@addclass')->name('staff.forms.class');
-    // Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.forms.allocatefaculties');
-    // Route::get('addmarks', 'staff@addmarks')->name('staff.forms.marks');
+    Route::middleware('student')->group(function() {
+        Route::get('examform', 'student@getfillexaminationform')->name('student.forms.examform');
+        Route::post('examform', 'student@fillexaminationform');
+        Route::get('gazette', 'student@viewgazette')->name('student.forms.gazette');
+    });
+
+    Route::middleware('examcell')->group(function() {
+        Route::get('schemes', 'examcell@schemes')->name('examcell.scheme');
+
+        Route::get('examination', 'examcell@getexaminationform')->name('examcell.forms.examination');
+        Route::post('examination', 'examcell@addexamination');
+
+        Route::get('course', 'examcell@getcourseform')->name('examcell.forms.courses');
+        Route::post('course', 'examcell@addcourse');
+
+        Route::get('courses', 'examcell@getexamcourserelationform')->name('examcell.forms.examcourserelation');
+        Route::post('courses', 'examcell@addexamcourserelation');
+
+        Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
+        
+        Route::post('schemes','examcell@addscheme');
+        Route::patch('schemes','examcell@updatescheme');
+        Route::delete('schemes','examcell@deletescheme');
+
+
+        Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
+        Route::get('getsyllabus/{id}','examcell@getsyllabus');
+        Route::post('syllabus','examcell@addsyllabus');
+        Route::patch('syllabus','examcell@updatesyllabus');
+        Route::delete('syllabus','examcell@deletesyllabus');
+
+        // HARIS's ROUTES
+        Route::get('seatno','examcell@seatno')->name('examcell.forms.seatno');
+        Route::post('seatnolist','seatno@generateseatno');
+        Route::get('harispractice','harispractice@demo');
+    });
+
 
 });
-
-
-// SOHAIL's ROUTES
-Route::get('schemes','examcell@schemes')->name('examcell.forms.schemes');
-Route::post('schemes','examcell@addscheme');
-Route::patch('schemes','examcell@updatescheme');
-Route::delete('schemes','examcell@deletescheme');
-// HOD ROUTES
-    // addclass route
-    Route::get('addclass','staff@addclass')->name('staff.forms.addclass');
-    // gets roomnumbers dynamically route
-    // Route::post('/getRoomNo',function(){
-    //     if(Request::ajax()){
-    //         return Reesponse::json(Request::all());
-    //     }
-    // });
-
-    // Sohail Test route
-    Route::post('/kamehamehaa',function(Request $r){
-        $id = $_POST['id'];
-        $rooms = \App\Classrooms::where('floor',$id)->select('roomnumber')->get();
-         
-        return response()->json($rooms);
-    })->name('kamehamehaa');
-
-// Classes allottment 
-Route::post('/classisallotted',function(){
-    $ac = new \App\AllottedClass();
-    $room = $_POST['roomno'];
-    $ac->room = intval($room);
-    $intclass = $_POST['classname'];
-    $ac->classname = intval($intclass);
-    $ac->dept=$_POST['department'];
-    $ac->save();
-    return "success";
-})->name('classisallotted');
-
-Route::get('syllabus','examcell@syllabus')->name('examcell.forms.syllabus');
-Route::get('getsyllabus/{id}','examcell@getsyllabus');
-Route::post('syllabus','examcell@addsyllabus');
-Route::patch('syllabus','examcell@updatesyllabus');
-Route::delete('syllabus','examcell@deletesyllabus');
-
-
-// HARIS's ROUTES
-Route::get('seatno','examcell@seatno')->name('examcell.forms.seatno');
-Route::post('seatnolist','seatno@generateseatno');
-Route::get('harispractice','harispractice@demo');
 
 
 // DATA FILLING SCRIPTS
