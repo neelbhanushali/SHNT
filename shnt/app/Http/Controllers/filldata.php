@@ -1080,6 +1080,8 @@ class filldata extends Controller
         // $examinations->save();
         // EXTC EXAMINATION ENDS
         
+<<<<<<< HEAD
+=======
         
         // adding courses of 3rd sem
         $c = new \App\Course();
@@ -1291,6 +1293,7 @@ class filldata extends Controller
         $c->save();
 
 
+>>>>>>> 7ad8cf81683c472e34a2bb1c0a526d130231a4e6
         // adding courses of 5th sem
         $c = new \App\Course();
         $c->title = "Microprocessor";
