@@ -28,13 +28,13 @@ class filldata extends Controller
         // class room record adding
 
         // ME department
-        $al = new \App\Classrooms();
-        $al->roomnumber = 103;
-        $al->floor = 0;
-        $al->dept = "ME";
-        $al->capacity = 70;
-        $al->type = "LH";
-        $al->save();
+        // $al = new \App\Classrooms();
+        // $al->roomnumber = 103;
+        // $al->floor = 0;
+        // $al->dept = "ME";
+        // $al->capacity = 70;
+        // $al->type = "LH";
+        // $al->save();
 
         $al = new \App\Classrooms();
         $al->roomnumber = 104;
@@ -1079,6 +1079,7 @@ class filldata extends Controller
         // $examinations->wef = "2012";
         // $examinations->save();
         // EXTC EXAMINATION ENDS
+        
         // adding courses of 5th sem
         $c = new \App\Course();
         $c->title = "Microprocessor";
