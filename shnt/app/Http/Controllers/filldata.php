@@ -789,19 +789,19 @@ class filldata extends Controller
         // adding examinations
 
         // COMPUTER ENGINEERING EXAMINATIONS
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CO";
-        $examinations->semester = 1;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CO";
+        // $examinations->semester = 1;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CO";
-        $examinations->semester = 2;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CO";
+        // $examinations->semester = 2;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
         $examinations = new \App\Examination();
         $examinations->scheme = "CBSGS";
@@ -831,253 +831,253 @@ class filldata extends Controller
         $examinations->wef = "2012";
         $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CO";
-        $examinations->semester = 7;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CO";
+        // $examinations->semester = 7;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CO";
-        $examinations->semester = 8;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CO";
+        // $examinations->semester = 8;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         // COMPUTER ENGINEERING EXAMINATION ENDS
         // CIVIL ENGINEERING EXAMINATIONS
 
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 1;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 1;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 2;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 2;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 3;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 3;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 4;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 4;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 5;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 5;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 6;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 6;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 7;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 7;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "CE";
-        $examinations->semester = 8;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "CE";
+        // $examinations->semester = 8;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         // CIVIL ENGINEERING EXAMINATION ENDS
         // MECHANICAL ENGINEERING EXAMS
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 1;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 1;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 2;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 2;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 3;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 3;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 4;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 4;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 5;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 5;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 6;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 6;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 7;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 7;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "ME";
-        $examinations->semester = 8;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "ME";
+        // $examinations->semester = 8;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         // MECHANICAL ENGINEERING EXAMINATION ENDS
         
         // ELECTRICAL ENGINEERING EXAMINATIONS
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 1;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 1;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 2;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 2;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 3;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 3;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 4;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 4;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 5;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 5;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 6;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 6;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 7;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 7;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EE";
-        $examinations->semester = 8;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EE";
+        // $examinations->semester = 8;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         // ELECTRICAL ENGINEEIRNG EXAMINATION ENDS
 
         // EXTC EXAMINATIONS
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 1;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 1;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 2;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 2;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 3;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 3;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 4;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 4;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 5;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 5;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 6;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 6;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 7;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 7;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         
-        $examinations = new \App\Examination();
-        $examinations->scheme = "CBSGS";
-        $examinations->department = "EXTC";
-        $examinations->semester = 8;
-        $examinations->wef = "2012";
-        $examinations->save();
+        // $examinations = new \App\Examination();
+        // $examinations->scheme = "CBSGS";
+        // $examinations->department = "EXTC";
+        // $examinations->semester = 8;
+        // $examinations->wef = "2012";
+        // $examinations->save();
         // EXTC EXAMINATION ENDS
         // adding courses of 5th sem
         $c = new \App\Course();
