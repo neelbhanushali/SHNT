@@ -62,6 +62,11 @@ Route::middleware('loggedin')->group(function() {
             $ac->save();
             return "success";
         })->name('classisallotted');
+
+        Route::get('addinternalmarks/{course_id}', 'staff@addinternalmarks')->name('staff.forms.addinternalmarks');
+        Route::post('addinternalmarks/{course_id}', 'staff@updateinternalmarks');
+
+        Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.form.allocatefaculties');
     });
 
     Route::middleware('student')->group(function() {
@@ -107,3 +112,16 @@ Route::middleware('loggedin')->group(function() {
 
 // DATA FILLING SCRIPTS
 Route::get('filldata','filldata@save');
+Route::get('filldata/{exam_form_id}', function($exam_form_id) {
+    // function exam_scores_filling($exam_form_id) {
+        $ef = \App\ExamForm::find($exam_form_id);
+        $courses = \App\Course::where('examination_id', $ef->examination_id)->get();
+
+        foreach($courses as $c) {
+            $m = new \App\Scores();
+            $m->exam_form_id = $exam_form_id;
+            $m->course_id = $c->id;
+            $m->save();
+        }
+    // }
+});

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class filldata extends Controller
 {
+    
+
     public function save(){
 
 
@@ -1486,17 +1488,17 @@ class filldata extends Controller
 
         // adding examform
         $ef = new \App\ExamForm();
-        $ef->examination_id = 1;
+        $ef->examination_id = 3;
         $ef->rollnumber = "13CO19";
-        $ef->seatnumber = "COC5011";
+        $ef->seatnumber = null;
         $ef->month = "december";
-        $ef->kt = 1;
+        $ef->kt = 0;
         $ef->half = 2;
         $ef->year = 2015;
         $ef->save();
 
         $ef = new \App\ExamForm();
-        $ef->examination_id = 1;
+        $ef->examination_id = 3;
         $ef->rollnumber = "15DCO67";
         $ef->seatnumber = "COC5012";
         $ef->month = "december";
@@ -1505,24 +1507,55 @@ class filldata extends Controller
         $ef->save();
 
         $ef = new \App\ExamForm();
-        $ef->examination_id = 1;
+        $ef->examination_id = 3;
         $ef->rollnumber = "14CO28";
-        $ef->seatnumber = "COC5013";
+        $ef->seatnumber = null;
         $ef->month = "december";
         $ef->half = 2;
-        $ef->year = 2015;
+        $ef->year = 2016;
         $ef->save();
 
+        // csr relation
+        $csr = new \App\CSR();
+        $csr->teacher = "tabrezkhan";
+        $csr->course_id = 13;
+        $csr->th = 1;
+        $csr->pt = 1;
+        $csr->save();
+
+        $csr = new \App\CSR();
+        $csr->teacher = "tabrezkhan";
+        $csr->course_id = 17;
+        $csr->pt = 1;
+        $csr->save();
+
         // marks adding
-        $m = new \App\Scores();
-        $m->exam_form_id = 1;
-        $m->course_id = 1;
-        $m->ia1 = 10;
-        $m->ia2 = 10;
-        $m->ese = 24;
-        $m->tw = 18;
-        $m->pror = 22;
-        $m->save();
+        
+
+        // \App\ExamForm::exam_form_filling(1);
+        // \App\ExamForm::exam_form_filling(3);
+
+        // $m = new \App\Scores();
+        // $m->exam_form_id = 1;
+        // $m->course_id = 1;
+        // $m->ia1 = 10;
+        // $m->ia2 = 10;
+        // $m->ese = 24;
+        // $m->tw = 18;
+        // $m->pror = 22;
+        // $m->save();
+
+        // $m = new \App\Scores();
+        // $m->exam_form_id = 3;
+        // $m->course_id = 1;
+        // $m->ia1 = 10;
+        // $m->ia2 = 10;
+        // $m->ese = 24;
+        // $m->tw = 18;
+        // $m->pror = 22;
+        // $m->save();
 
     }
+
+    
 }

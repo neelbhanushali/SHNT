@@ -208,8 +208,20 @@
                 <li class="bold">
                   <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">library_books</i>
-                    <span class="nav-text">Add Marks</span>
+                    <span class="nav-text">Add Internal Marks</span>
                   </a>
+                  <div class="collapsible-body">
+                    <ul>
+                      @foreach($coursesteaching = \App\CSR::where('teacher', $user->username)->get() as $ct)
+                      <li>
+                        <a href="{{route('staff.forms.addinternalmarks', ['course_id' => $ct->course_id])}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>{{\App\Course::find($ct->course_id)->short}}</span>
+                        </a>
+                      </li>
+                      @endforeach
+                    </ul>
+                  </div>
                 </li>
                 @endif
                 <!-- STAFF NAVIGATION ENDS -->
