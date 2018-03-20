@@ -65,6 +65,8 @@ Route::middleware('loggedin')->group(function() {
 
         Route::get('addinternalmarks/{course_id}', 'staff@addinternalmarks')->name('staff.forms.addinternalmarks');
         Route::post('addinternalmarks/{course_id}', 'staff@updateinternalmarks');
+
+        Route::get('allocatefaculties', 'staff@allocatefaculties')->name('staff.form.allocatefaculties');
     });
 
     Route::middleware('student')->group(function() {
