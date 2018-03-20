@@ -75,4 +75,26 @@ class staff extends Controller
         // return dd(compact('user', 'course', 'students'));
         return view('staff.forms.addinternalmarks')->with(compact('user', 'course', 'students'));
     }
+
+    public function updateinternalmarks(Request $r) {
+        // $s = \App\Scores::where('exam_form_id',$r->input('exam_form_id'))->where('course_id', $r->input('course_id'))->first();
+        // $s->ia1 = $r->input('ia1');
+        // $s->ia2 = $r->input('ia2');
+        // $s->tw = $r->input('tw');
+        // $s->save();
+        \DB::table('scores')->where('exam_form_id', $r->input('exam_form_id'))->where('course_id', $r->input('course_id'))
+            ->update([
+                    'ia1' => $r->input('ia1'),
+                    'ia2' => $r->input('ia2'),
+                    'tw' => $r->input('tw'),
+                    'updated_at' => \Carbon\Carbon::now()
+                ]);
+
+        $return['title'] = 'Success';
+        $return['type'] = 'success';
+        $return['message'] = 'Scheme successfully added';
+        $return['schemes'] = \App\Scheme::all();
+        $return['_token'] = csrf_token();
+        return json_encode($return);
+    }
 }

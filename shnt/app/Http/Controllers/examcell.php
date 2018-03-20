@@ -28,7 +28,7 @@ class examcell extends Controller
 
         $return['title'] = 'Success';
         $return['type'] = 'success';
-        $return['message'] = 'Scheme successfully added';
+        $return['message'] = 'Marks successfully updated.';
         $return['schemes'] = \App\Scheme::all();
         $return['_token'] = csrf_token();
         return json_encode($return);

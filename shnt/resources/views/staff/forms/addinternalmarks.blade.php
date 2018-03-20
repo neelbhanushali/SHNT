@@ -22,14 +22,13 @@
                 <h4 class="header">Add Internal Marks</h4>
                 <div class="row">
                     <div class="col s12">
-                        <table id="t" class="datatable display" cellspacing="0">
+                        <table id="internalmarks" class="datatable display" cellspacing="0">
                             <thead>
                                 <tr>
                                     <td>Roll Number</td>
                                     <td>IA1</td>
                                     <td>IA2</td>
                                     <td>TW</td>
-                                    <td></td>
                                 </tr>
                             </thead>
                             @foreach($students as $s)
@@ -37,7 +36,7 @@
                                 <td>{{$s->rollnumber}}</td>
                                 <td>
                                     <div class="input-field col s12">
-                                        <input form="{{$s->rollnumber}}_{{$s->exam_form_id}}" placeholder="ia1" id="ia1" name="ia1" type="text" value="{{$s->ia1}}">
+                                        <input data-no-change form="{{$s->rollnumber}}_{{$s->exam_form_id}}" placeholder="ia1" id="ia1" name="ia1" type="text" value="{{$s->ia1}}">
                                     </div>
                                 </td>
                                 <td>
@@ -47,18 +46,14 @@
                                 </td>
                                 <td>
                                     <div class="input-field col s12">
-                                        <input form="{{$s->rollnumber}}_{{$s->exam_form_id}}" placeholder="tw" id="tw" name="tw" type="text" value="{{$s->tw}}">
+                                        <form id="{{$s->rollnumber}}_{{$s->exam_form_id}}" action="" method="post">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="rollnumber" value="{{$s->rollnumber}}">
+                                            <input type="hidden" name="exam_form_id" value="{{$s->exam_form_id}}">
+                                            <input type="hidden" name="course_id" value="{{$course->id}}">
+                                            <input placeholder="tw" id="tw" name="tw" type="text" value="{{$s->tw}}">
+                                        </form>
                                     </div>    
-                                </td>
-                                <td>
-                                    <form id="{{$s->rollnumber}}_{{$s->exam_form_id}}" action="" method="post">
-                                        {{csrf_field()}}
-                                        <input type="hidden" name="rollnumber" value="{{$s->rollnumber}}">
-                                        <input type="hidden" name="exam_form_id" value="{{$s->exam_form_id}}">
-                                        <button type="button" onclick="editSyllabus(this)" class="btn-floating waves-effect waves-light editbtn">
-                                            <i class="material-icons">edit</i>
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -369,7 +364,6 @@
             $(selector).closest('tr').find('[name=ia1]').val(data[i]['IA1']);
             $(selector).closest('tr').find('[name=ia2]').val(data[i]['IA2']);
             $(selector).closest('tr').find('[name=tw]').val(data[i]['TW']);
-            
         }
       };
       reader.onerror = function(){ alert('Unable to read ' + file.fileName); };
@@ -395,10 +389,29 @@
                   extend: 'csv',
                   text: 'Export CSV',
                   filename: 'INTERNAL_ASSESSMENT_{{$course->short}}',
-                  exportOptions: {
-                        columns: [0, 1, 2, 3]
-                },
               },
+              {
+                    text: 'Update Marks',
+                    action: function() {
+                        $('#internalmarks form').each(function() {
+                            $.post(
+                                $(this).attr('action'),
+                                $(this).serialize(),
+                                function(data) {
+                                    data = JSON.parse(data);
+                                    $('meta[name="csrf-token"]').attr('content', data._token);
+                                    swal({
+                                    title: data.title,
+                                    text: data.message,
+                                    type: data.type
+                                    }, function() {
+                                        Materialize.updateTextFields();
+                                    });
+                                }
+                            );
+                        });
+                    }
+                }
               
           ]
       } );
