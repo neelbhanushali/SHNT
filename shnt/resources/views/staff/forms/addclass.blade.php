@@ -83,7 +83,7 @@
                         <tbody>
                         @foreach($allottedclasses = DB::table('allotted_classes')->where('allotted_classes.dept', $user->department)->join('years','allotted_classes.classname','=','years.id')->get() as $allottedclass)
                             <tr>
-                                <td>{{$allottedclass->name}}</td>
+                                <td>{{$allottedclass->name}}{{$user->department}}</td>
                                 <td>{{$allottedclass->room}}</td>
                                 <td><button type="button" class="btn waves-effect waves-light clicker" id="{{$allottedclass->room}}">MORE INFO</button></td>
                             </tr>

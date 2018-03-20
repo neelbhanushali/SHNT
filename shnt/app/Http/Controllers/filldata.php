@@ -160,44 +160,44 @@ class filldata extends Controller
         // $al->save();
 
         // // CO department
-        // $al = new \App\Classrooms();
-        // $al->roomnumber = 403;
-        // $al->floor = 3;
-        // $al->dept = "CO";
-        // $al->capacity = 70;
-        // $al->type = "LH";
-        // $al->save();
+        $al = new \App\Classrooms();
+        $al->roomnumber = 403;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
 
-        // $al = new \App\Classrooms();
-        // $al->roomnumber = 404;
-        // $al->floor = 3;
-        // $al->dept = "CO";
-        // $al->capacity = 70;
-        // $al->type = "LH";
-        // $al->save();
+        $al = new \App\Classrooms();
+        $al->roomnumber = 404;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
 
-        // $al = new \App\Classrooms();
-        // $al->roomnumber = 405;
-        // $al->floor = 3;
-        // $al->dept = "CO";
-        // $al->capacity = 70;
-        // $al->type = "LH";
-        // $al->save();
+        $al = new \App\Classrooms();
+        $al->roomnumber = 405;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
 
-        // $al = new \App\Classrooms();
-        // $al->roomnumber = 406;
-        // $al->floor = 3;
-        // $al->dept = "CO";
-        // $al->capacity = 70;
-        // $al->type = "LH";
-        // $al->save();
+        $al = new \App\Classrooms();
+        $al->roomnumber = 406;
+        $al->floor = 3;
+        $al->dept = "CO";
+        $al->capacity = 70;
+        $al->type = "LH";
+        $al->save();
 
-        // // alloted classes record adding
-        // $al = new \App\AllottedClass();
-        // $al->room = 406;
-        // $al->classname = "4";
-        // $al->dept = "CO";
-        // $al->save();
+        // alloted classes record adding
+        $al = new \App\AllottedClass();
+        $al->room = 406;
+        $al->classname = "4";
+        $al->dept = "CO";
+        $al->save();
 
         // STUDENT ADDING SCRIPTS
 
@@ -1080,8 +1080,6 @@ class filldata extends Controller
         // $examinations->save();
         // EXTC EXAMINATION ENDS
         
-<<<<<<< HEAD
-=======
         
         // adding courses of 3rd sem
         $c = new \App\Course();
@@ -1293,7 +1291,6 @@ class filldata extends Controller
         $c->save();
 
 
->>>>>>> 7ad8cf81683c472e34a2bb1c0a526d130231a4e6
         // adding courses of 5th sem
         $c = new \App\Course();
         $c->title = "Microprocessor";
