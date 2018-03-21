@@ -95,7 +95,7 @@
                                         @if(!empty($course->tw))<td>TW</td>@endif
                                     </tr>
                                 </thead>
-                                @foreach($studentskt as $skt)
+                                @foreach($studentskt as $sk)
                                 <tr>
                                         <td>
                                             {{$skt->rollnumber}}
