@@ -15,12 +15,12 @@ class CreateCSRsTable extends Migration
     {
         Schema::create('c_s_rs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('teacher');
-            $table->foreign('teacher')->references('username')->on('staff')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('course_id')->unsigned();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
-            $table->boolean('th')->default(0);
-            $table->boolean('pt')->default(0);
+            $table->string('teacher_th')->nullable();
+            // $table->foreign('teacher_th')->references('username')->on('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('teacher_pt')->nullable();
+            // $table->foreign('teacher_pt')->references('username')->on('staff')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

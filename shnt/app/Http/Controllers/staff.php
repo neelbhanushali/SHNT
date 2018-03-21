@@ -122,6 +122,22 @@ class staff extends Controller
     }
 
     public function allocatefaculties_(Request $r) {
-        return $r->all();
+        if(empty($r->input('teacher_th')) && empty($r->input('teacher_pt'))) return;
+
+        
+        $csrs = \App\CSR::where('course_id', $r->input('course_id'))->first();
+
+        if(\App\CSR::where('course_id', $r->input('course_id'))->first()) {
+            $csrs = \App\CSR::where('course_id', $r->input('course_id'))->first();
+        }
+        else {
+            $csrs = new \App\CSR();
+            $csrs->course_id = $r->input('course_id');
+        }
+
+        if(!empty($r->input('teacher_th'))) $csrs->teacher_th = $r->input('teacher_th');
+        if(!empty($r->input('teacher_pt'))) $csrs->teacher_pt = $r->input('teacher_pt');
+
+        $csrs->save();
     }
 }

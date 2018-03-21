@@ -49,7 +49,7 @@
                                     <select form="sem_{{$key}}_{{$c->c_course_id}}" name="teacher_th" id="">
                                         <option value="" disabled selected>Select staff</option>
                                         @foreach($staffs as $s)
-                                        <option @if($s->username == $c->teacher && $c->th){{'selected'}}@endif value="{{$s->username}}">{{$s->firstname}} {{$s->lastname}} @if($s->hod){{'(you)'}}@endif</option>
+                                        <option @if($s->username == $c->teacher_th){{'selected'}}@endif value="{{$s->username}}">{{$s->firstname}} {{$s->lastname}} @if($s->hod){{'(you)'}}@endif</option>
                                         @endforeach
                                     </select>
                                     @endif
@@ -59,7 +59,7 @@
                                     <select form="sem_{{$key}}_{{$c->c_course_id}}" name="teacher_pt" id="">
                                         <option value="" disabled selected>Select staff</option>
                                         @foreach($staffs as $s)
-                                        <option @if($s->username == $c->teacher && $c->pt){{'selected'}}@endif value="{{$s->username}}">{{$s->firstname}} {{$s->lastname}} @if($s->hod){{'(you)'}}@endif</option>
+                                        <option @if($s->username == $c->teacher_pt){{'selected'}}@endif value="{{$s->username}}">{{$s->firstname}} {{$s->lastname}} @if($s->hod){{'(you)'}}@endif</option>
                                         @endforeach
                                     </select>
                                     @endif

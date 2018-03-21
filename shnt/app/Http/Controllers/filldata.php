@@ -1541,16 +1541,14 @@ class filldata extends Controller
 
         // csr relation
         $csr = new \App\CSR();
-        $csr->teacher = "tabrezkhan";
         $csr->course_id = 13;
-        $csr->th = 1;
-        $csr->pt = 1;
+        $csr->teacher_th = "tabrezkhan";
+        $csr->teacher_pt = "tabrezkhan";
         $csr->save();
 
         $csr = new \App\CSR();
-        $csr->teacher = "tabrezkhan";
         $csr->course_id = 17;
-        $csr->pt = 1;
+        $csr->teacher_pt = "tabrezkhan";
         $csr->save();
 
         // marks adding
