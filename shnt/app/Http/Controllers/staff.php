@@ -73,7 +73,7 @@ class staff extends Controller
         $course = \App\Course::find($course_id);
         $students = \DB::table('scores')->where('scores.course_id', $course->id)->where('exam_forms.kt', 0)->join('exam_forms', 'scores.exam_form_id', '=', 'exam_forms.id')->get();
         $studentskt = \DB::table('scores')->where('scores.course_id', $course->id)->where('exam_forms.kt', 1)->join('exam_forms', 'scores.exam_form_id', '=', 'exam_forms.id')->get();
-        // return dd(compact('user', 'course', 'students', 'studentskt'));
+        // return compact('user', 'course', 'students', 'studentskt');
         return view('staff.forms.addinternalmarks')->with(compact('user', 'course', 'students', 'studentskt'));
     }
 
@@ -135,8 +135,18 @@ class staff extends Controller
             $csrs->course_id = $r->input('course_id');
         }
 
-        if(!empty($r->input('teacher_th'))) $csrs->teacher_th = $r->input('teacher_th');
-        if(!empty($r->input('teacher_pt'))) $csrs->teacher_pt = $r->input('teacher_pt');
+        if(!empty($r->input('teacher_th'))) {
+            if($r->input('teacher_th') == 'none')
+                $csrs->teacher_th = null;
+            else
+                $csrs->teacher_th = $r->input('teacher_th');
+        }
+        if(!empty($r->input('teacher_pt'))) {
+            if($r->input('teacher_pt') == 'none')
+                $csrs->teacher_pt = null;
+            else
+                $csrs->teacher_pt = $r->input('teacher_pt');
+        }
 
         $csrs->save();
     }
