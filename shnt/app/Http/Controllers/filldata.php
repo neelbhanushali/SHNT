@@ -530,7 +530,6 @@ class filldata extends Controller
         $staff = new \App\Staff();
         $staff->firstname = "Salmaan";
         $staff->department = "CO";
-        $staff->hod = 1;
         $staff->username = "Shamsi";
         $staff->email = "salmanshamsi@gmail.com";
         $staff->contact = "9898989890";
@@ -804,7 +803,7 @@ class filldata extends Controller
         // $examinations->semester = 2;
         // $examinations->wef = "2012";
         // $examinations->save();
-        
+
         $examinations = new \App\Examination();
         $examinations->scheme = "CBSGS";
         $examinations->department = "CO";
@@ -831,6 +830,13 @@ class filldata extends Controller
         $examinations->department = "CO";
         $examinations->semester = 6;
         $examinations->wef = "2012";
+        $examinations->save();
+
+        $examinations = new \App\Examination();
+        $examinations->scheme = "CBCGS";
+        $examinations->department = "CO";
+        $examinations->semester = 3;
+        $examinations->wef = "2016";
         $examinations->save();
         
         // $examinations = new \App\Examination();
@@ -1484,6 +1490,24 @@ class filldata extends Controller
         $c->c_th = null;
         $c->c_pt = "2";
         $c->examination_id = 4;
+        $c->save();
+
+        // adding courses of 3rd sem CBCGS
+        $c = new \App\Course();
+        $c->title = "Applied Mathematics III";
+        $c->short = "AM3";
+        $c->code = "CSC301";
+        $c->department = "CO";
+        $c->semester = "3";
+        $c->ia1 = "20";
+        $c->ia2 = "20";
+        $c->ese = "80";
+        $c->tw = "25";
+        $c->pror = null;
+        $c->c_th = "4";
+        $c->c_pt = null;
+        $c->c_tut = "1";
+        $c->examination_id = 5;
         $c->save();
 
         // adding examform
