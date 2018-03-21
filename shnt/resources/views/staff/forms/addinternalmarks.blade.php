@@ -21,7 +21,12 @@
             <div>
                 <h4 class="header">Add Internal Marks</h4>
                 <div class="row">
-                    <div class="col s12">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab col s3"><a href="#students">Regular ({{count($students)}})</a></li>
+                        <li class="tab col s3"><a href="#studentskt">KT ({{count($studentskt)}})</a></li>
+                    </ul>
+                    <div id="students" class="col s12">
+                        <br>
                         <table id="internalmarks" class="datatable display" cellspacing="0">
                             <thead>
                                 <tr>
@@ -36,12 +41,20 @@
                                 <td>{{$s->rollnumber}}</td>
                                 <td>
                                     <div class="input-field col s12">
+                                        @if(empty($s->ia1))
                                         <input data-no-change form="{{$s->rollnumber}}_{{$s->exam_form_id}}" placeholder="ia1" id="ia1" name="ia1" type="text" value="{{$s->ia1}}">
+                                        @else
+                                        {{$s->ia1}}
+                                        @endif
                                     </div>
                                 </td>
                                 <td>
                                     <div class="input-field col s12">
+                                        @if(empty($s->ia2))
                                         <input form="{{$s->rollnumber}}_{{$s->exam_form_id}}" placeholder="ia2" id="ia2" name="ia2" type="text" value="{{$s->ia2}}">
+                                        @else
+                                        {{$s->ia2}}
+                                        @endif
                                     </div>   
                                 </td>
                                 <td>
@@ -51,7 +64,11 @@
                                             <input type="hidden" name="rollnumber" value="{{$s->rollnumber}}">
                                             <input type="hidden" name="exam_form_id" value="{{$s->exam_form_id}}">
                                             <input type="hidden" name="course_id" value="{{$course->id}}">
+                                            @if(empty($s->tw))
                                             <input placeholder="tw" id="tw" name="tw" type="text" value="{{$s->tw}}">
+                                            @else
+                                            {{$s->tw}}
+                                            @endif
                                         </form>
                                     </div>    
                                 </td>
@@ -59,6 +76,45 @@
                             @endforeach
                         </table>
                     </div>
+                    <div id="studentskt" class="col s12">
+                        <br>
+                            <table id="internalmarkskt" class="datatable display" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <td>Roll Number</td>
+                                        <td>IA1</td>
+                                        <td>IA2</td>
+                                        <td>TW</td>
+                                    </tr>
+                                </thead>
+                                @foreach($studentskt as $skt)
+                                <tr>
+                                    <td>{{$skt->rollnumber}}</td>
+                                    <td>
+                                        <div class="input-field col s12">
+                                            <input data-no-change form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="ia1" id="ia1" name="ia1" type="text" value="{{$skt->ia1}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-field col s12">
+                                            <input form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="ia2" id="ia2" name="ia2" type="text" value="{{$skt->ia2}}">
+                                        </div>   
+                                    </td>
+                                    <td>
+                                        <div class="input-field col s12">
+                                            <form id="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" action="" method="post">
+                                                {{csrf_field()}}
+                                                <input type="hidden" name="rollnumber" value="{{$skt->rollnumber}}">
+                                                <input type="hidden" name="exam_form_id" value="{{$skt->exam_form_id}}">
+                                                <input type="hidden" name="course_id" value="{{$course->id}}">
+                                                <input placeholder="tw" id="tw" name="tw" type="text" value="{{$skt->tw}}">
+                                            </form>
+                                        </div>    
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </table>
+                        </div>
                 </div>
             </div>  
         </div>
@@ -124,7 +180,7 @@
 
         // $('.datatable').DataTable().destroy();
         datatable.destroy();
-        $('.datatable').DataTable( {
+        $('#internalmarks').DataTable( {
           dom: 'Bfrtip',
           buttons: [
               {
@@ -142,6 +198,46 @@
                     text: 'Update Marks',
                     action: function() {
                         $('#internalmarks form').each(function() {
+                            $.post(
+                                $(this).attr('action'),
+                                $(this).serialize(),
+                                function(data) {
+                                    data = JSON.parse(data);
+                                    $('meta[name="csrf-token"]').attr('content', data._token);
+                                    swal({
+                                    title: data.title,
+                                    text: data.message,
+                                    type: data.type
+                                    }, function() {
+                                        Materialize.updateTextFields();
+                                    });
+                                }
+                            );
+                        });
+                    }
+                }
+              
+          ]
+      } );
+
+      $('#internalmarkskt').DataTable( {
+          dom: 'Bfrtip',
+          buttons: [
+              {
+                  text: 'Import CSV',
+                  action: function ( e, dt, node, config ) {
+                      $('#csv').click();
+                  }
+              },
+              {
+                  extend: 'csv',
+                  text: 'Export CSV',
+                  filename: 'INTERNAL_ASSESSMENT_KT_{{$course->short}}',
+              },
+              {
+                    text: 'Update Marks',
+                    action: function() {
+                        $('#internalmarkskt form').each(function() {
                             $.post(
                                 $(this).attr('action'),
                                 $(this).serialize(),
