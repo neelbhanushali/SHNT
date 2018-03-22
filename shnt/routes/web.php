@@ -128,3 +128,60 @@ Route::get('filldata/{exam_form_id}', function($exam_form_id) {
         }
     // }
 });
+
+//Marks Adding Scripts
+Route::get('fillmarks/{formid}',function($formid){
+    $form = \App\Scores::where('exam_form_id',$formid)->get();
+    foreach($form as $jd){
+        $match = ['exam_form_id'=>$formid,'course_id'=>$jd->course_id];
+        $ip = \App\Scores::where($match)->update([
+            'ia1' => rand(10,15),
+            'ia2' => rand(5,10),
+            'ese' => rand(20,40),
+        ]);
+        $tw = \App\Course::find($jd->course_id);
+        print_r($tw->id." : ".$tw->tw."<br>");
+        if(!empty($tw->tw)){
+            $ip = \App\Scores::where($match)->update([
+                'tw' => rand(10,25),
+            ]);
+        }
+        if(!empty($tw->oral)){
+            $ip = \App\Scores::where($match)->update([
+                'oral' => rand(10,25),
+            ]);
+        }
+        if(!empty($tw->pror)){
+            $ip = \App\Scores::where($match)->update([
+                'pror' => rand(10,25),
+            ]);
+        }
+        $ip1 = \App\Scores::where($match)->first();
+        $ia1 = $ip1->ia1;
+        $ia2 = $ip1->ia2;
+        $ese = $ip1->ese;
+        
+        if((($ia1 + $ia2)/2)>8 && $ese>32){
+            $match = ['exam_form_id'=>$formid,'course_id'=>$jd->course_id];
+            $ip = \App\Scores::where($match)->update([
+                'success'=>1
+            ]); 
+        }else{
+            $match = ['exam_form_id'=>$formid,'course_id'=>$jd->course_id];
+            $ip = \App\Scores::where($match)->update([
+                'success'=>0
+            ]);
+        }
+    }
+    $checkarray = ['exam_form_id'=>$formid,'success'=>0];
+    $check = \App\Scores::where($checkarray)->get()->count();
+    if($check != 0){
+        $result = \App\ExamForm::where('id',$formid)->update([
+            'success'=>0
+        ]);
+    }else{
+        $result = \App\ExamForm::where('id',$formid)->update([
+            'success'=>1
+        ]);
+    }
+});

@@ -251,6 +251,33 @@
                 </li>
                 @endif
                 <!-- HOD NAVIGATION ENDS -->
+                
+                <!-- STUDENT NAVIGATION -->
+                @if(session()->get('type')=='student')
+                <li class="bold">
+                  <a class="collapsible-header waves-effect waves-cyan">
+                    <i class="material-icons">library_books</i>
+                    <span class="nav-text">Exam Forms</span>
+                  </a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li>
+                        <a href="{{route('student.forms.examform')}}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>ATKT Form</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Regular Form</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                @endif
+                <!-- STUDENT NAVIGATION ENDS -->
 
               </ul>
             </li>
