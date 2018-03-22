@@ -212,7 +212,7 @@
                   </a>
                   <div class="collapsible-body">
                     <ul>
-                      @foreach($coursesteaching = \App\CSR::where('teacher', $user->username)->get() as $ct)
+                      @foreach($coursesteaching = \DB::table('c_s_rs')->where('teacher_th', $user->username)->orWhere('teacher_pt', $user->username)->get() as $ct)
                       <li>
                         <a href="{{route('staff.forms.addinternalmarks', ['course_id' => $ct->course_id])}}">
                           <i class="material-icons">keyboard_arrow_right</i>

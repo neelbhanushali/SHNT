@@ -31,14 +31,23 @@
                             <thead>
                                 <tr>
                                     <td>Roll Number</td>
-                                    <td>IA1</td>
-                                    <td>IA2</td>
-                                    <td>TW</td>
+                                    @if(!empty($course->ia1))<td>IA1</td>@endif
+                                    @if(!empty($course->ia2))<td>IA2</td>@endif
+                                    @if(!empty($course->tw))<td>TW</td>@endif
                                 </tr>
                             </thead>
                             @foreach($students as $s)
                             <tr>
-                                <td>{{$s->rollnumber}}</td>
+                                <td>
+                                    {{$s->rollnumber}}
+                                    <form id="{{$s->rollnumber}}_{{$s->exam_form_id}}" action="" method="post">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="rollnumber" value="{{$s->rollnumber}}">
+                                        <input type="hidden" name="exam_form_id" value="{{$s->exam_form_id}}">
+                                        <input type="hidden" name="course_id" value="{{$course->id}}">
+                                    </form>
+                                </td>
+                                @if(!empty($course->ia1))
                                 <td>
                                     <div class="input-field col s12">
                                         @if(empty($s->ia1))
@@ -48,6 +57,8 @@
                                         @endif
                                     </div>
                                 </td>
+                                @endif
+                                @if(!empty($course->ia2))
                                 <td>
                                     <div class="input-field col s12">
                                         @if(empty($s->ia2))
@@ -57,21 +68,18 @@
                                         @endif
                                     </div>   
                                 </td>
+                                @endif
+                                @if(!empty($course->tw))
                                 <td>
                                     <div class="input-field col s12">
-                                        <form id="{{$s->rollnumber}}_{{$s->exam_form_id}}" action="" method="post">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="rollnumber" value="{{$s->rollnumber}}">
-                                            <input type="hidden" name="exam_form_id" value="{{$s->exam_form_id}}">
-                                            <input type="hidden" name="course_id" value="{{$course->id}}">
-                                            @if(empty($s->tw))
-                                            <input placeholder="tw" id="tw" name="tw" type="text" value="{{$s->tw}}">
-                                            @else
-                                            {{$s->tw}}
-                                            @endif
-                                        </form>
+                                        @if(empty($s->tw))
+                                        <input form="{{$s->rollnumber}}_{{$s->exam_form_id}}" placeholder="tw" id="tw" name="tw" type="text" value="{{$s->tw}}">
+                                        @else
+                                        {{$s->tw}}
+                                        @endif
                                     </div>    
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </table>
@@ -82,36 +90,56 @@
                                 <thead>
                                     <tr>
                                         <td>Roll Number</td>
-                                        <td>IA1</td>
-                                        <td>IA2</td>
-                                        <td>TW</td>
+                                        @if(!empty($course->ia1))<td>IA1</td>@endif
+                                        @if(!empty($course->ia2))<td>IA2</td>@endif
+                                        @if(!empty($course->tw))<td>TW</td>@endif
                                     </tr>
                                 </thead>
                                 @foreach($studentskt as $skt)
                                 <tr>
-                                    <td>{{$skt->rollnumber}}</td>
-                                    <td>
-                                        <div class="input-field col s12">
-                                            <input data-no-change form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="ia1" id="ia1" name="ia1" type="text" value="{{$skt->ia1}}">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="input-field col s12">
-                                            <input form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="ia2" id="ia2" name="ia2" type="text" value="{{$skt->ia2}}">
-                                        </div>   
-                                    </td>
-                                    <td>
-                                        <div class="input-field col s12">
+                                        <td>
+                                            {{$skt->rollnumber}}
                                             <form id="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" action="" method="post">
                                                 {{csrf_field()}}
                                                 <input type="hidden" name="rollnumber" value="{{$skt->rollnumber}}">
                                                 <input type="hidden" name="exam_form_id" value="{{$skt->exam_form_id}}">
                                                 <input type="hidden" name="course_id" value="{{$course->id}}">
-                                                <input placeholder="tw" id="tw" name="tw" type="text" value="{{$skt->tw}}">
                                             </form>
-                                        </div>    
-                                    </td>
-                                </tr>
+                                        </td>
+                                        @if(!empty($course->ia1))
+                                        <td>
+                                            <div class="input-field col s12">
+                                                @if(empty($skt->ia1))
+                                                <input data-no-change form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="ia1" id="ia1" name="ia1" type="text" value="{{$skt->ia1}}">
+                                                @else
+                                                {{$skt->ia1}}
+                                                @endif
+                                            </div>
+                                        </td>
+                                        @endif
+                                        @if(!empty($course->ia2))
+                                        <td>
+                                            <div class="input-field col s12">
+                                                @if(empty($skt->ia2))
+                                                <input form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="ia2" id="ia2" name="ia2" type="text" value="{{$skt->ia2}}">
+                                                @else
+                                                {{$skt->ia2}}
+                                                @endif
+                                            </div>   
+                                        </td>
+                                        @endif
+                                        @if(!empty($course->tw))
+                                        <td>
+                                            <div class="input-field col s12">
+                                                @if(empty($skt->tw))
+                                                <input form="{{$skt->rollnumber}}_{{$skt->exam_form_id}}" placeholder="tw" id="tw" name="tw" type="text" value="{{$skt->tw}}">
+                                                @else
+                                                {{$skt->tw}}
+                                                @endif
+                                            </div>    
+                                        </td>
+                                        @endif
+                                    </tr>
                                 @endforeach
                             </table>
                         </div>
