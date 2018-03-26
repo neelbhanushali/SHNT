@@ -161,7 +161,7 @@ Route::get('fillmarks/{formid}',function($formid){
         $ia2 = $ip1->ia2;
         $ese = $ip1->ese;
         
-        if((($ia1 + $ia2)/2)>8 && $ese>32){
+        if((($ia1 + $ia2)/2)>=8 && $ese>=32){
             $match = ['exam_form_id'=>$formid,'course_id'=>$jd->course_id];
             $ip = \App\Scores::where($match)->update([
                 'success'=>1
